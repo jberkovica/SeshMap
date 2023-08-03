@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Link,
+    NavLink,
+    Route,
+    Routes,
+} from "react-router-dom";
 
 import Home from "./pages/Home";
 import SessionPlanner from "./pages/SessionPlanner";
@@ -15,13 +21,13 @@ function App() {
             <div className="App">
                 <nav className="navbar navbar-expand-lg navbar-custom">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="/">
+                        <Link to="/" className="navbar-brand">
                             <img
                                 src={process.env.PUBLIC_URL + "/seshmap-logo.png"}
                                 alt="Logo"
                                 className="navbar-logo"
                             />
-                        </a>
+                        </Link>
                         <button
                             className="navbar-toggler"
                             type="button"
@@ -40,29 +46,32 @@ function App() {
                         >
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" href="/">
+                                    <NavLink to="/" className="nav-link">
                                         Home
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/sessionplanner">
+                                    <NavLink
+                                        to="/sessionplanner"
+                                        className="nav-link"
+                                    >
                                         Session Planner
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/resources">
+                                    <NavLink to="/resources" className="nav-link">
                                         Resources
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/ranking">
+                                    <NavLink to="/ranking" className="nav-link">
                                         Ranking
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/surveys">
+                                    <NavLink to="/surveys" className="nav-link">
                                         Surveys
-                                    </a>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
