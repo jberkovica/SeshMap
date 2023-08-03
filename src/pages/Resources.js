@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModuleSelector from "./../components/ModuleSelector";
 import LevelSelector from "./../components/LevelSelector";
+import { findModuleByName } from "../modules";
 
 function Resources() {
     const [selectedLevel, setSelectedLevel] = useState("");
@@ -8,6 +9,7 @@ function Resources() {
 
     const handleLevelChange = level => {
         setSelectedLevel(level);
+        // TODO: fix selected value
         // Clear the selected module when changing the level
         setSelectedModule("");
     };
@@ -16,25 +18,16 @@ function Resources() {
         setSelectedModule(module);
     };
 
-    return (
-        // <div className="App">
-        //     <LevelSelector
-        //         selectedLevel={selectedLevel}
-        //         onSelectLevel={handleLevelChange}
-        //     />
-        //     <ModuleSelector
-        //         selectedLevel={selectedLevel}
-        //         onSelectModule={handleModuleChange}
-        //     />
+    // Accessing the name and code of the selected module
+    const selectedModuleData = findModuleByName(selectedModule);
+    if (selectedModuleData) {
+        console.log(Object.keys(selectedModuleData));
+        console.log(selectedModuleData.name);
+    }
+    // const moduleName = selectedModuleData.name;
+    // const moduleCode = selectedModuleData.code;
 
-        //     {/* Display the current selection */}
-        //     {selectedLevel && selectedModule && (
-        //         <div>
-        //             <h2>Selected Level: {selectedLevel}</h2>
-        //             <h2>Selected Module: {selectedModule}</h2>
-        //         </div>
-        //     )}
-        // </div>
+    return (
         <div>
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
                 <div className="row">
@@ -42,30 +35,26 @@ function Resources() {
                         <p>Please select Level and Module</p>
                     </div>
                     <div className="col-md-6">
-                        {/* <div className="dropdown">
-                        <button
-                            className="btn btn-secondary dropdown-toggle"
-                            type="button"
-                            id="moduleDropdown"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            Select Module
-                        </button>
-                        
-                    </div> */}
-                        <LevelSelector
-                            selectedLevel={selectedLevel}
-                            onSelectLevel={handleLevelChange}
-                        />
-                        <ModuleSelector
-                            selectedLevel={selectedLevel}
-                            onSelectModule={handleModuleChange}
-                        />
+                        <div className="row">
+                            <div className="col-md-6">
+                                <LevelSelector
+                                    selectedLevel={selectedLevel}
+                                    onSelectLevel={handleLevelChange}
+                                />
+                            </div>
+                            <div className="col-md-6">
+                                <ModuleSelector
+                                    selectedLevel={selectedLevel}
+                                    onSelectModule={handleModuleChange}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <h4>{selectedModule}</h4>
+            {/* {selectedModule !== "" ? (
+                <h4 className="mt-5">{`${moduleCode} : ${moduleName}`}</h4>
+            ) : null} */}
         </div>
     );
 }

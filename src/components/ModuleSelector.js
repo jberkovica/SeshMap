@@ -1,5 +1,5 @@
 import React from "react";
-import { modules, getModulesForLevel } from "../modules";
+import { getModulesForLevel } from "../modules";
 
 const ModuleSelector = ({ selectedLevel, onSelectModule }) => {
     // Define modules based on the selected level
@@ -10,6 +10,8 @@ const ModuleSelector = ({ selectedLevel, onSelectModule }) => {
         onSelectModule(selectedModule);
     };
 
+    // TODO: fix selected value
+
     return (
         <div>
             <select
@@ -17,7 +19,7 @@ const ModuleSelector = ({ selectedLevel, onSelectModule }) => {
                 aria-label="Default select example"
                 onChange={handleModuleChange}
             >
-                <option selected value="">
+                <option defaultValue value="">
                     Select Module
                 </option>
                 {modulesByLevel?.map((module, index) => (

@@ -1,6 +1,7 @@
 const modules = {
     "Level 4": {
         CM: {
+            id: "CM",
             name: "Computational Mathematics",
             code: "",
             syllabus: "",
@@ -15,6 +16,7 @@ const modules = {
             rpl: "",
         },
         DM: {
+            id: "DM",
             name: "Discrete Mathematics",
             code: "",
             syllabus: "",
@@ -29,6 +31,7 @@ const modules = {
             rpl: "",
         },
         FCS: {
+            id: "FCS",
             name: "",
             code: "",
             syllabus: "",
@@ -43,6 +46,7 @@ const modules = {
             rpl: "",
         },
         ITP1: {
+            id: "ITP1",
             name: "Introduction to Programming I",
             code: "CM1005",
             syllabus: "",
@@ -57,6 +61,7 @@ const modules = {
             rpl: "",
         },
         ITP2: {
+            id: "ITP2",
             name: "Introduction to Programming II",
             code: "",
             syllabus:
@@ -380,4 +385,18 @@ const getModulesForLevel = levelName => {
     return Object.keys(modulesByLevel);
 };
 
-export { modules, getModulesForLevel };
+// Function to find a module by name
+const findModuleByName = moduleName => {
+    for (const levelModules of Object.values(modules)) {
+        const foundModule = Object.values(levelModules).find(module => {
+            // console.log("module.name ", module.name, "moduleName ", moduleName);
+            return module.id === moduleName;
+        });
+        if (foundModule) {
+            return foundModule;
+        }
+    }
+    return null; // Module not found
+};
+
+export { modules, getModulesForLevel, findModuleByName };

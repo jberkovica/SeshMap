@@ -16,7 +16,7 @@ const LevelSelector = ({ selectedLevel, onSelectLevel }) => {
                 aria-label="Default select example"
                 onChange={handleLevelChange}
             >
-                <option selected value="">
+                <option defaultValue value="">
                     Select Level
                 </option>
                 {levels.map(element => (
