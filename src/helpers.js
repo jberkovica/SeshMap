@@ -2,42 +2,48 @@
 // Assuming it will take arguments Level+Module name
 // Assignee: @vincent
 
-// TODO: process CSV to some object maybe?
-function parseCSVData(csvData) {
-    const lines = csvData.split("\n");
-    const headers = lines[0].split(",");
-    const result = [];
+// const fetch = require('node-fetch');
+const fs = require('fs');
+const path = require('path');
 
-    for (let i = 1; i < lines.length; i++) {
-        const currentLine = lines[i].split(",");
-        if (currentLine.length === headers.length) {
-            const obj = {};
-            for (let j = 0; j < headers.length; j++) {
-                obj[headers[j]] = currentLine[j];
-            }
-            result.push(obj);
+const csvFilePath = path.join(__dirname, '../public/data/Level4.csv');
+let extractedHeaders;
+
+function readFile(){fs.promises.readFile(csvFilePath, 'utf-8')
+.then(csvData => {
+    const rows = csvData.split('\n'); // Split CSV data into rows
+    extractedHeaders = rows[0].split(','); // Extract headers from the first row
+
+    const nestedArray = [];
+
+    for (let i = 1; i < extractedHeaders.length; i++) {
+        nestedArray[i - 1] = [];
+    }
+
+    for (let i = 1; i < rows.length; i++) {
+        const values = rows[i].split(',');
+        if (values.length === extractedHeaders.length) {
+        for (let j = 1; j < values.length; j++) {
+            nestedArray[j - 1].push(values[j]);
+        }
         }
     }
-    return result;
-}
 
-// Function to handle the fetched CSV data
-function handleCSVData(csvData) {
-    const parsedData = parseCSVData(csvData);
-    return parsedData; // Return the parsed data
-}
-
-// Fetch the CSV file
-fetch("./data/Level4.csv")
-    .then(response => response.text())
-    .then(handleCSVData)
-    .then(parsedData => {
-        // The parsedData variable will hold the result
-        // console.log(parsedData);
-        // You can now use the parsedData variable as needed
+    // console.log(nestedArray[0]); // Display the transposed nested array
+    // Remove the first element from the array
+    extractedHeaders.shift()
+    console.log(extractedHeaders.length)
+    console.log(nestedArray.length)
     })
-    .catch(error => console.error("Error fetching the CSV file:", error));
+    .catch(error => {
+    console.error('Error reading or parsing CSV data:', error);
+    });
+}
 
+readFile()
+// console.log('External: '+extractedHeaders.length)
+
+  
 // Helper function helper, gets the value and return the key
 function getKeyByValue(obj, value) {
     for (const key in obj) {
@@ -101,34 +107,37 @@ const interestValueMap = {
     "Very Interesting": 5,
 };
 
-function calcModuleDifficulty(moduleId) {
+function calcModuleDifficulty(moduleName) {
+    // for (var i = 0; i<8;i++){
+    //     if
+    // }
     return 0;
 }
-function calcModuleTime(moduleId) {
+function calcModuleTime(moduleName) {
     return 0;
 }
-function calcModuleQuality(moduleId) {
+function calcModuleQuality(moduleName) {
     return 0;
 }
-function calcModuleSelfStudy(moduleId) {
+function calcModuleSelfStudy(moduleName) {
     return 0;
 }
-function calcModuleLearning(moduleId) {
+function calcModuleLearning(moduleName) {
     return 0;
 }
-function calcModuleInterest(moduleId) {
+function calcModuleInterest(moduleName) {
     return 0;
 }
-function calcModuleCombined(moduleId) {
+function calcModuleCombined(moduleName) {
     return 0;
 }
 
-export {
-    calcModuleDifficulty,
-    calcModuleTime,
-    calcModuleQuality,
-    calcModuleSelfStudy,
-    calcModuleLearning,
-    calcModuleInterest,
-    calcModuleCombined,
-};
+// export {
+//     calcModuleDifficulty,
+//     calcModuleTime,
+//     calcModuleQuality,
+//     calcModuleSelfStudy,
+//     calcModuleLearning,
+//     calcModuleInterest,
+//     calcModuleCombined,
+// };

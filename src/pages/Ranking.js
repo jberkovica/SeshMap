@@ -67,13 +67,14 @@ const ModuleData = ({ selectedModule }) => {
                     {selectedModuleData.code} : {selectedModuleData.name}
                 </h3>
                 {/* This is temporary data for testing puproses */}
-                <p>Difficulty: {calcModuleDifficulty(selectedModuleData.id)}</p>
-                <p>Time: {calcModuleTime(selectedModuleData.id)}</p>
-                <p>Quality: {calcModuleQuality(selectedModuleData.id)}</p>
-                <p>Self Study: {calcModuleSelfStudy(selectedModuleData.id)}</p>
-                <p>Learning: {calcModuleLearning(selectedModuleData.id)}</p>
-                <p>Interest: {calcModuleInterest(selectedModuleData.id)}</p>
-                <p>Combined: {calcModuleCombined(selectedModuleData.id)}</p>
+                {/* @Kate, I changed id to name */}
+                <p>Difficulty: {calcModuleDifficulty(selectedModuleData.name)}</p>
+                <p>Time: {calcModuleTime(selectedModuleData.name)}</p>
+                <p>Quality: {calcModuleQuality(selectedModuleData.name)}</p>
+                <p>Self Study: {calcModuleSelfStudy(selectedModuleData.name)}</p>
+                <p>Learning: {calcModuleLearning(selectedModuleData.name)}</p>
+                <p>Interest: {calcModuleInterest(selectedModuleData.name)}</p>
+                <p>Combined: {calcModuleCombined(selectedModuleData.name)}</p>
             </div>
         );
     } else {
