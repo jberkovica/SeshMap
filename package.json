@@ -38,6 +38,8 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "csv-parser": "^3.0.0",
+    "firebase": "^10.1.0",
     "node-fetch": "^3.3.2",
     "react-router-dom": "^6.14.2",
     "react-scripts": "^5.0.1"
