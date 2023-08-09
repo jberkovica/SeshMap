@@ -1,31 +1,63 @@
-function getModuleDifficulty(moduleName) {
+// average
+
+function getModuleDifficultyAverage(moduleName) {
     return 0;
 }
-function getModuleTime(moduleName) {
+function getModuleTimeAverage(moduleName) {
     return 0;
 }
-function getModuleQuality(moduleName) {
+function getModuleQualityAverage(moduleName) {
     return 0;
 }
-function getModuleSelfStudy(moduleName) {
+function getModuleSelfStudyAverage(moduleName) {
     return 0;
 }
-function getModuleLearning(moduleName) {
+function getModuleLearningAverage(moduleName) {
     return 0;
 }
-function getModuleInterest(moduleName) {
+function getModuleInterestAverage(moduleName) {
     return 0;
 }
-function getModuleCombined(moduleName) {
+function getModuleCombinedAverage(moduleName) {
     return 0;
 }
 
+// total
+
+function getModuleDifficultyTotal(moduleName) {
+    return 0;
+}
+function getModuleTimeTotal(moduleName) {
+    return 0;
+}
+function getModuleQualityTotal(moduleName) {
+    return 0;
+}
+function getModuleSelfStudyTotal(moduleName) {
+    return 0;
+}
+function getModuleLearningTotal(moduleName) {
+    return 0;
+}
+function getModuleInterestTotal(moduleName) {
+    return 0;
+}
+// function getModuleCombinedTotal(moduleName) {
+//     return 0;
+// }
+
 export {
-    getModuleDifficulty,
-    getModuleTime,
-    getModuleQuality,
-    getModuleSelfStudy,
-    getModuleLearning,
-    getModuleInterest,
-    getModuleCombined,
+    getModuleDifficultyAverage,
+    getModuleTimeAverage,
+    getModuleQualityAverage,
+    getModuleSelfStudyAverage,
+    getModuleLearningAverage,
+    getModuleInterestAverage,
+    getModuleCombinedAverage,
+    getModuleDifficultyTotal,
+    getModuleTimeTotal,
+    getModuleQualityTotal,
+    getModuleSelfStudyTotal,
+    getModuleLearningTotal,
+    getModuleInterestTotal,
 };
