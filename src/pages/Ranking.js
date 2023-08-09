@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import ModuleSelector from "./../components/ModuleSelector";
 import LevelSelector from "./../components/LevelSelector";
 import { findModuleByName } from "../modules";
-// import {
-//     calcModuleDifficulty,
-//     calcModuleTime,
-//     calcModuleQuality,
-//     calcModuleSelfStudy,
-//     calcModuleLearning,
-//     calcModuleInterest,
-//     calcModuleCombined,
-// } from "../helpers";
+import {
+    getModuleDifficulty,
+    getModuleTime,
+    getModuleQuality,
+    getModuleSelfStudy,
+    getModuleLearning,
+    getModuleInterest,
+    getModuleCombined,
+} from "../helpers";
 
 function Ranking() {
     const [selectedLevel, setSelectedLevel] = useState("");
@@ -67,14 +67,13 @@ const ModuleData = ({ selectedModule }) => {
                     {selectedModuleData.code} : {selectedModuleData.name}
                 </h3>
                 {/* This is temporary data for testing puproses */}
-                {/* @Kate, I changed id to name */}
-                {/* <p>Difficulty: {calcModuleDifficulty(selectedModuleData.name)}</p>
-                <p>Time: {calcModuleTime(selectedModuleData.name)}</p>
-                <p>Quality: {calcModuleQuality(selectedModuleData.name)}</p>
-                <p>Self Study: {calcModuleSelfStudy(selectedModuleData.name)}</p>
-                <p>Learning: {calcModuleLearning(selectedModuleData.name)}</p>
-                <p>Interest: {calcModuleInterest(selectedModuleData.name)}</p>
-                <p>Combined: {calcModuleCombined(selectedModuleData.name)}</p> */}
+                <p>Difficulty: {getModuleDifficulty(selectedModuleData.name)}</p>
+                <p>Time: {getModuleTime(selectedModuleData.name)}</p>
+                <p>Quality: {getModuleQuality(selectedModuleData.name)}</p>
+                <p>Self Study: {getModuleSelfStudy(selectedModuleData.name)}</p>
+                <p>Learning: {getModuleLearning(selectedModuleData.name)}</p>
+                <p>Interest: {getModuleInterest(selectedModuleData.name)}</p>
+                <p>Combined: {getModuleCombined(selectedModuleData.name)}</p>
             </div>
         );
     } else {
