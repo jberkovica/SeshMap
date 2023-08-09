@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import ModuleSelector from "./../components/ModuleSelector";
 import LevelSelector from "./../components/LevelSelector";
 import { findModuleByName } from "../modules";
-import {
-    getModuleDifficulty,
-    getModuleTime,
-    getModuleQuality,
-    getModuleSelfStudy,
-    getModuleLearning,
-    getModuleInterest,
-    getModuleCombined,
-} from "../helpers";
+// import {
+//     getModuleDifficulty,
+//     getModuleTime,
+//     getModuleQuality,
+//     getModuleSelfStudy,
+//     getModuleLearning,
+//     getModuleInterest,
+//     getModuleCombined,
+// } from "../helpers";
 
 function Ranking() {
     const [selectedLevel, setSelectedLevel] = useState("");
@@ -67,13 +67,13 @@ const ModuleData = ({ selectedModule }) => {
                     {selectedModuleData.code} : {selectedModuleData.name}
                 </h3>
                 {/* This is temporary data for testing puproses */}
-                <p>Difficulty: {getModuleDifficulty(selectedModuleData.name)}</p>
+                {/* <p>Difficulty: {getModuleDifficulty(selectedModuleData.name)}</p>
                 <p>Time: {getModuleTime(selectedModuleData.name)}</p>
                 <p>Quality: {getModuleQuality(selectedModuleData.name)}</p>
                 <p>Self Study: {getModuleSelfStudy(selectedModuleData.name)}</p>
                 <p>Learning: {getModuleLearning(selectedModuleData.name)}</p>
                 <p>Interest: {getModuleInterest(selectedModuleData.name)}</p>
-                <p>Combined: {getModuleCombined(selectedModuleData.name)}</p>
+                <p>Combined: {getModuleCombined(selectedModuleData.name)}</p> */}
             </div>
         );
     } else {
