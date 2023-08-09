@@ -1,7 +1,7 @@
 const fs = require("fs");
 const csvParser = require("csv-parser");
 
-const files = ["src/data/Level5.csv", "src/data/Level5.csv", "src/data/Level5.csv"];
+const files = ["src/data/Level4.csv", "src/data/Level5.csv", "src/data/Level6.csv"];
 
 const jsonData = {};
 
@@ -34,8 +34,17 @@ const processFile = file => {
                         const matches = columnName.match(regex);
 
                         if (matches) {
-                            const category = matches[1];
+                            let category = matches[1];
                             const module = matches[2];
+
+                            // convert data to have same headers
+                            if (
+                                category === "Difficulty" ||
+                                category === "Course Material Difficulty"
+                            ) {
+                                // convert
+                                category = "Course Difficulty";
+                            }
 
                             const value = data[columnName];
                             if (value) {

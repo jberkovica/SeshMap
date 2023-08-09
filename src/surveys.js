@@ -1,3 +1,5 @@
+// TODO: Remove if will be unnecessary
+
 const na = "Not applicable";
 
 // value for each category item is same as index
