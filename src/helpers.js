@@ -1,74 +1,110 @@
 import jsonData from "./parsedData.json";
-// import { na, surveyValues } from "./surveys";
+import surveyValues from "./surveys";
 
-// average
+// Calculate average
 
 function getModuleDifficultyAverage(moduleName) {
-    return 0;
+    const category = "Course Difficulty";
+    return calcAverage(moduleName, category);
 }
 function getModuleTimeAverage(moduleName) {
-    return 0;
+    const category = "Time";
+    return calcAverage(moduleName, category);
 }
 function getModuleQualityAverage(moduleName) {
-    return 0;
+    const category = "Quality";
+    return calcAverage(moduleName, category);
 }
 function getModuleSelfStudyAverage(moduleName) {
-    return 0;
+    const category = "Self-Learning";
+    return calcAverage(moduleName, category);
 }
 function getModuleLearningAverage(moduleName) {
-    return 0;
+    const category = "Learning";
+    return calcAverage(moduleName, category);
 }
 function getModuleInterestAverage(moduleName) {
-    return 0;
+    const category = "Interest";
+    return calcAverage(moduleName, category);
 }
 function getModuleCombinedAverage(moduleName) {
-    return 0;
+    //
 }
 
-// calculating total for each category and comparing results
+// Calculate total for each category and comparing results
 // to sort modules from best to worst in each category
 
+// TODO: add level 6 categories
+
 function getModuleDifficultyTotal(moduleName) {
-    // Extract the data for the specified module and category "Difficulty"
-    const moduleData = jsonData[moduleName]?.["Course Difficulty"] || [];
+    const category = "Course Difficulty";
+    return calcTotal(moduleName, category);
+}
+function getModuleTimeTotal(moduleName) {
+    const category = "Time";
+    return calcTotal(moduleName, category);
+}
+function getModuleQualityTotal(moduleName) {
+    const category = "Quality";
+    return calcTotal(moduleName, category);
+}
+function getModuleSelfStudyTotal(moduleName) {
+    const category = "Self-Learning";
+    return calcTotal(moduleName, category);
+}
+function getModuleLearningTotal(moduleName) {
+    const category = "Learning";
+    return calcTotal(moduleName, category);
+}
+function getModuleInterestTotal(moduleName) {
+    const category = "Interest";
+    return calcTotal(moduleName, category);
+}
+function getModuleCombinedTotal(moduleName) {
+    // TODO:
+}
 
-    // Remove "Not applicable" values
-    const filteredData = moduleData.filter(value => value !== "Not applicable");
+// Helper functions
 
-    // Define difficulty values and their corresponding scores
-    const difficultyValues = {
-        "Very Difficult": 0,
-        Difficult: 1,
-        Moderate: 2,
-        Easy: 3,
-        "Very Easy": 4,
-    };
+function filterData(moduleName, category) {
+    // Extract the data for the specified module and category
+    const moduleData = jsonData[moduleName]?.[category] || [];
+    // Remove "Not applicable" values and empty strings
+    return moduleData.filter(value => value !== "Not applicable" && value !== "");
+}
 
-    // Calculate the total difficulty score for the module
+// Calculate the total score for the module
+function calcTotal(moduleName, category) {
+    const filteredData = filterData(moduleName, category);
+    const valuesMap = getValuesMap(category);
     const totalScore = filteredData.reduce((accumulator, value) => {
-        return accumulator + (difficultyValues[value] || 0);
+        return accumulator + (valuesMap[value] || 0);
     }, 0);
 
     return totalScore;
 }
-function getModuleTimeTotal(moduleName) {
-    return 0;
+
+function calcAverage(moduleName, category) {
+    const filteredData = filterData(moduleName, category);
+    const valuesMap = getValuesMap(category);
+    const totalScore = filteredData.reduce((accumulator, value) => {
+        return accumulator + (valuesMap[value] || 0);
+    }, 0);
+
+    const average = totalScore / filteredData.length;
+    return average.toFixed(2);
 }
-function getModuleQualityTotal(moduleName) {
-    return 0;
+
+function getValuesMap(category) {
+    const values = surveyValues[category];
+    const valuesMap = {};
+
+    values.forEach((value, index) => {
+        valuesMap[value] = index;
+    });
+
+    return valuesMap;
 }
-function getModuleSelfStudyTotal(moduleName) {
-    return 0;
-}
-function getModuleLearningTotal(moduleName) {
-    return 0;
-}
-function getModuleInterestTotal(moduleName) {
-    return 0;
-}
-// function getModuleCombinedTotal(moduleName) {
-//     return 0;
-// }
 
 export {
     getModuleDifficultyAverage,
@@ -84,4 +120,5 @@ export {
     getModuleSelfStudyTotal,
     getModuleLearningTotal,
     getModuleInterestTotal,
+    getModuleCombinedTotal,
 };

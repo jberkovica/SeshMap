@@ -30,7 +30,7 @@ const processFile = file => {
                 for (const columnName in data) {
                     // Iterate through each column (except the timestamp)
                     if (columnName !== "Timestamp") {
-                        const regex = /^(\w+)\s*\[(.*?)\]$/;
+                        const regex = /^(.*?)\s*\[(.*?)\]$/;
                         const matches = columnName.match(regex);
 
                         if (matches) {

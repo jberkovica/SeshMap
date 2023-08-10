@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModuleSelector from "./../components/ModuleSelector";
 import LevelSelector from "./../components/LevelSelector";
 import { findModuleByName } from "../modules";
-import { getModuleDifficultyTotal } from "../helpers";
+import { getModuleDifficultyTotal, getModuleDifficultyAverage } from "../helpers";
 
 function Ranking() {
     const [selectedLevel, setSelectedLevel] = useState("");
@@ -60,7 +60,12 @@ const ModuleData = ({ selectedModule }) => {
                 </h3>
                 {/* This is temporary data for testing puproses */}
                 <p>
-                    Difficulty: {getModuleDifficultyTotal(selectedModuleData.name)}
+                    Difficulty total (sum):{" "}
+                    {getModuleDifficultyTotal(selectedModuleData.name)}
+                </p>
+                <p>
+                    Difficulty average:{" "}
+                    {getModuleDifficultyAverage(selectedModuleData.name)}
                 </p>
             </div>
         );
