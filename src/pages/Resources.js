@@ -4,8 +4,8 @@ import LevelSelector from "./../components/LevelSelector";
 import { findModuleByName } from "../modules";
 
 function Resources() {
-    const [selectedLevel, setSelectedLevel] = useState("");
-    const [selectedModule, setSelectedModule] = useState();
+    const [selectedLevel, setSelectedLevel] = useState("Level4");
+    const [selectedModule, setSelectedModule] = useState("CM");
 
     const handleLevelChange = level => {
         setSelectedLevel(level);
@@ -19,6 +19,7 @@ function Resources() {
     };
 
     // TODO: maybe show basic content with disable buttons instead of empty page?
+    // TODO: save last selection to session store?
 
     return (
         <div>

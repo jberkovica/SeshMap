@@ -4,11 +4,14 @@ import { modules } from "../modules";
 // import { getModuleDifficultyTotal, getModuleDifficultyAverage } from "../helpers";
 
 function Ranking() {
-    const [selectedLevel, setSelectedLevel] = useState("");
+    const [selectedLevel, setSelectedLevel] = useState("Level4");
 
     const handleLevelChange = level => {
         setSelectedLevel(level);
     };
+
+    // TODO: have level4 selected by default
+    // TODO: save last selection to session store?
 
     return (
         <div>

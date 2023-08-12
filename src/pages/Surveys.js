@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import LevelSelector from "./../components/LevelSelector";
 
 function Surveys() {
+    const [selectedLevel, setSelectedLevel] = useState("");
+
+    const handleLevelChange = level => {
+        setSelectedLevel(level);
+    };
+
     return (
-        // TODO: implement grid
         <div>
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
-                <h1 className="display-4">Surveys</h1>
-                <p className="lead">
-                    This is a simple hero unit, a simple jumbotron-style component
-                    for calling extra attention to featured content or information.
-                </p>
-                <hr className="my-4"></hr>
-                <p>
-                    It uses utility classNamees for typography and spacing to space
-                    content out within the larger container.
-                </p>
-                <a className="btn btn-primary btn-lg" href="/" role="button">
-                    Learn more
-                </a>
+                <div className="row">
+                    <div className="col-md-6">
+                        <p className="lead">Please select Level</p>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <LevelSelector
+                                    selectedLevel={selectedLevel}
+                                    onSelectLevel={handleLevelChange}
+                                />
+                            </div>
+                            <div className="col-md-6"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
