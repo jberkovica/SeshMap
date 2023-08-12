@@ -15,7 +15,7 @@ function Ranking() {
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
                 <div className="row">
                     <div className="col-md-6">
-                        <p>Please select Level</p>
+                        <p className="lead">Please select Level</p>
                     </div>
                     <div className="col-md-6">
                         <div className="row">
@@ -114,10 +114,10 @@ const LevelData = ({ selectedLevel }) => {
     if (selectedLevelData) {
         return (
             <div className="container pt-5">
-                <h2 className="text-center mb-5">{displayHeader(selectedLevel)}</h2>
+                <h2 className="text-center mb-5 display-3">{displayHeader(selectedLevel)}</h2>
                 {/* Module comparison */}
                 {/* TODO: add sorting option by column */}
-                <h5 className="text-center mb-5">Modules comparison</h5>
+                <h5 className="text-center mb-5 display-5">Modules comparison</h5>
                 <table className="table table-hover table-striped mb-5">
                     <thead>
                         <tr>
@@ -136,7 +136,7 @@ const LevelData = ({ selectedLevel }) => {
                 </table>
 
                 {/* Module ranking */}
-                <h5 className="text-center mb-5">Modules ranking</h5>
+                <h5 className="text-center mb-5 display-5">Modules ranking</h5>
                 <table className="table table-hover table-fixed table-striped mt-5">
                     <thead>
                         <tr>

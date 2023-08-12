@@ -18,12 +18,14 @@ function Resources() {
         setSelectedModule(module);
     };
 
+    // TODO: maybe show basic content with disable buttons instead of empty page?
+
     return (
         <div>
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
                 <div className="row">
                     <div className="col-md-6">
-                        <p>Please select Level and Module</p>
+                        <p className="lead">Please select Level and Module</p>
                     </div>
                     <div className="col-md-6">
                         <div className="row">
@@ -60,7 +62,7 @@ const ModuleData = ({ selectedModule }) => {
             // <div className="mt-5">
 
             <div className="container pt-5">
-                <h3 className="text-center mb-5">
+                <h3 className="text-center mb-5 display-5">
                     {selectedModuleData.code} : {selectedModuleData.name}
                 </h3>
                 <Syllabus selectedModuleData={selectedModuleData} />
