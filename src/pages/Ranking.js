@@ -118,7 +118,7 @@ const LevelData = ({ selectedLevel }) => {
                 {/* Module comparison */}
                 {/* TODO: add sorting option by column */}
                 <h5 className="text-center mb-5">Modules comparison</h5>
-                <table className="table table-striped mb-5">
+                <table className="table table-hover table-striped mb-5">
                     <thead>
                         <tr>
                             <th scope="col">Short</th>
@@ -137,9 +137,10 @@ const LevelData = ({ selectedLevel }) => {
 
                 {/* Module ranking */}
                 <h5 className="text-center mb-5">Modules ranking</h5>
-                <table className="table table-fixed table-striped mt-5">
+                <table className="table table-hover table-fixed table-striped mt-5">
                     <thead>
                         <tr>
+                            {/* TODO: list of headers should be the same as keys in surveys.js */}
                             <th scope="col">Short</th>
                             <th scope="col">Difficulty</th>
                             <th scope="col">Time</th>

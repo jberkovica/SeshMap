@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     BrowserRouter as Router,
     Link,
@@ -6,6 +6,7 @@ import {
     Route,
     Routes,
 } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 import Home from "./pages/Home";
 import SessionPlanner from "./pages/SessionPlanner";
@@ -16,9 +17,17 @@ import Resources from "./pages/Resources";
 import "./App.css";
 
 function App() {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // TODO: save dark mode state to session store
+
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        // You can apply your dark theme styles here
+    };
     return (
         <Router>
-            <div className="App">
+            <div className={`App ${isDarkMode ? "dark-mode" : ""}`}>
                 <nav className="navbar navbar-expand-lg navbar-custom">
                     <div className="container-fluid">
                         <Link to="/" className="navbar-brand">
@@ -74,6 +83,16 @@ function App() {
                                     </NavLink>
                                 </li>
                             </ul>
+                            <button
+                                className="btn btn-link text-white"
+                                onClick={toggleDarkMode}
+                            >
+                                <i
+                                    className={`bi ${
+                                        isDarkMode ? "bi-sun" : "bi-moon"
+                                    }`}
+                                ></i>
+                            </button>
                         </div>
                     </div>
                 </nav>
