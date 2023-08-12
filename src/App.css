@@ -48,6 +48,14 @@
     font-family: 'Inter';
 } */
 
+.content-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  min-height: 100vh;
+  /* Make sure the container takes at least the viewport height */
+}
+
 /* CSS for the sticky footer */
 .footer {
   position: fixed;

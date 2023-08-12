@@ -48,6 +48,8 @@ function Resources() {
     );
 }
 
+// TODO: reduce code duplication
+
 const ModuleData = ({ selectedModule }) => {
     // Accessing the name and code of the selected module
     const selectedModuleData = findModuleByName(selectedModule);
@@ -87,7 +89,7 @@ const Syllabus = ({ selectedModuleData }) => {
             <div className="col-md-6">
                 <p>Module structure and content with key concepts.</p>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 {syllabusURL && (
                     <a href={syllabusURL} target="_blank" rel="noopener noreferrer">
                         <button type="button" className="btn btn-primary">
@@ -115,7 +117,7 @@ const Specification = ({ selectedModuleData }) => {
                     methods.
                 </p>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 {specificationURL && (
                     <a
                         href={specificationURL}
@@ -137,7 +139,7 @@ const Slack = ({ selectedModuleData }) => {
 
     return (
         <div className="row p-5">
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 <h4 className="text-start">Slack</h4>
             </div>
             <div className="col-md-6">
@@ -147,7 +149,7 @@ const Slack = ({ selectedModuleData }) => {
                     problems.
                 </p>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 {slackURL && (
                     <a href={slackURL} target="_blank" rel="noopener noreferrer">
                         <button type="button" className="btn btn-primary">
@@ -175,7 +177,7 @@ const Repl = ({ selectedModuleData }) => {
                     Notes and other useful resources.
                 </p>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 {replURL && (
                     <a href={replURL} target="_blank" rel="noopener noreferrer">
                         <button type="button" className="btn btn-primary">
@@ -201,7 +203,7 @@ const Midterm = ({ selectedModuleData }) => {
             <div className="col-md-6">
                 <p>This is a link to available past midterms.</p>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 {midtermURL && (
                     <a href={midtermURL} target="_blank" rel="noopener noreferrer">
                         <button type="button" className="btn btn-primary">
@@ -225,7 +227,7 @@ const Final = ({ selectedModuleData }) => {
             <div className="col-md-6">
                 <p>This is a link to past exams and available answer sheets.</p>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 text-end">
                 {finalsURL && (
                     <a href={finalsURL} target="_blank" rel="noopener noreferrer">
                         <button type="button" className="btn btn-primary">
