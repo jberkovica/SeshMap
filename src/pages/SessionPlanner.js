@@ -1,8 +1,8 @@
 import React from "react";
+import Semester from "../components/Semester";
 
 function SessionPlanner() {
     return (
-        // TODO: implement grid
         <div>
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
                 <h3 className="display-5 mb-5">Tips on how to plan your semester</h3>
@@ -44,6 +44,7 @@ function SessionPlanner() {
                     </ul>
                 </div>
             </div>
+            <Semester />
             <div className="d-flex justify-content-center align-items-center mt-5">
                 <i className="bi bi-plus-circle fs-3 text-primary"></i>
             </div>
