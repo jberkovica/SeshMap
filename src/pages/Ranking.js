@@ -1,6 +1,24 @@
 import React, { useState } from "react";
 import LevelSelector from "./../components/LevelSelector";
+import { RadarChart}  from "./../components/RankingCharts";
 import { modules } from "../modules";
+import {
+    getModuleDifficultyAverage,
+    getModuleTimeAverage,
+    getModuleQualityAverage,
+    getModuleSelfStudyAverage,
+    getModuleLearningAverage,
+    getModuleInterestAverage,
+    getModuleAppreciationAverage,
+    getModuleDifficultyTotal,
+    getModuleTimeTotal,
+    getModuleQualityTotal,
+    getModuleSelfStudyTotal,
+    getModuleLearningTotal,
+    getModuleInterestTotal,
+    getModuleCombinedTotal,
+} from "../helpers";
+
 // import { getModuleDifficultyTotal, getModuleDifficultyAverage } from "../helpers";
 
 function Ranking() {
@@ -56,7 +74,6 @@ const displayHeader = level => {
 
 const TableWithModuleData = ({ selectedLevelData }) => {
     const tableRows = [];
-
     for (const moduleKey in selectedLevelData) {
         const module = selectedLevelData[moduleKey];
         tableRows.push(
@@ -92,26 +109,51 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
 
     for (const moduleKey in selectedLevelData) {
         const module = selectedLevelData[moduleKey];
+        const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
+        const ModuleTimeAverage = parseFloat(getModuleTimeAverage(module.name))
+        const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
+        const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
+        const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
+        // const ModuleAppreciationAverage = parseFloat(getModuleAppreciationAverage(module.name))
+        const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
+        const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
         tableRows.push(
             <tr key={moduleKey}>
                 <th scope="row">{module.id}</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>6</td>
-                <td>8</td>
+                <td>{ModuleDifficultyAverage}</td>
+                <td>{ModuleTimeAverage}</td>
+                <td>{ModuleQualityAverage}</td>
+                <td>{ModuleSelfStudyAverage}</td>
+                <td>{ModuleLearningAverage}</td>
+                {/* <td>{ModuleAppreciationAverage}</td> */}
+                <td>{ModuleInterestAverage}</td>
+                <td>{ModuleCombinedAverage.toFixed(2)}</td>
             </tr>
         );
     }
     return tableRows;
 };
 
+
+const Charting = ({ module }) => {
+    const dataArray = [parseFloat(getModuleDifficultyAverage(module.name)),
+                        parseFloat(getModuleTimeAverage(module.name)), 
+                        parseFloat(getModuleQualityAverage(module.name)),
+                        parseFloat(getModuleSelfStudyAverage(module.name)),
+                        parseFloat(getModuleLearningAverage(module.name)),
+                        parseFloat(getModuleInterestAverage(module.name))];
+    const labels = ['Difficulty', 'Time', 'Quality', 'Self Study', 'Learning', 'Interest'];
+    return <RadarChart dataArray={dataArray} labels={labels} title ={module.name} />;
+}
+
+
 const LevelData = ({ selectedLevel }) => {
     // Accessing the name and code of the selected module
     const selectedLevelData = modules[selectedLevel];
+    const moduleArray = []
+    for (const moduleKey in selectedLevelData){
+        moduleArray.push(selectedLevelData[moduleKey])
+    }
 
 
     if (selectedLevelData) {
@@ -149,16 +191,22 @@ const LevelData = ({ selectedLevel }) => {
                             <th scope="col">Time</th>
                             <th scope="col">Quality</th>
                             <th scope="col">Self-Study</th>
+                            <th scope="col">Learning</th>
+                            {/* <th scope="col">Appreciation</th> */}
                             <th scope="col">Interest</th>
-                            <th scope="col">Appreciation</th>
-                            <th scope="col">Interest</th>
-                            <th scope="col">Appreciation</th>
+                            <th scope="col">Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <TableWithModuleRanking selectedLevelData={selectedLevelData} />
                     </tbody>
                 </table>
+                <h5 className="text-center mb-5 display-5">Modules ranking</h5>
+                {moduleArray.map((module) => (
+                    <Charting module={module} />
+                ))}
+                {/* <Charting  selectedLevelData={selectedLevelData} /> */}
+                {/* <RankingCharts options={options} data={selectedLevelData}  /> */}
             </div>
         );
     } else {
