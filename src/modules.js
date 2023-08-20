@@ -219,7 +219,7 @@ const modules = {
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2010-sdd/past-exams/finals",
         },
         PWD: {
-            id: "PwD",
+            id: "PWD",
             name: "Programming with Data",
             code: "CM2015",
             syllabus:
