@@ -92,21 +92,12 @@ const TableWithModuleData = ({ selectedLevelData }) => {
 };
 
 const TableWithModuleRanking = ({ selectedLevelData }) => {
-    /* This is temporary data for testing puproses */
-    /* <p>
-        Difficulty total (sum):{" "}
-        {getModuleDifficultyTotal(selectedModuleData.name)}
-    </p>
-    <p>
-        Difficulty average:{" "}
-        {getModuleDifficultyAverage(selectedModuleData.name)}
-    </p> */
-
     // TODO: implement functions to retrive module position
     // TODO: implelemt sorting in table by name or ranking, can me done with react-bootstrap-table-next
+    const moduledetails = []
+    const tableRows = [];        
 
-    const tableRows = [];
-
+    // Creating the dictionary of all modules for future ranking purposes
     for (const moduleKey in selectedLevelData) {
         const module = selectedLevelData[moduleKey];
         const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
@@ -117,6 +108,12 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
         // const ModuleAppreciationAverage = parseFloat(getModuleAppreciationAverage(module.name))
         const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
         const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
+        // Create an object to be pushed into moduledetails
+        const newModule = {
+            name: module.name,
+            values: [ModuleDifficultyAverage, ModuleTimeAverage, ModuleQualityAverage, ModuleSelfStudyAverage, ModuleLearningAverage, ModuleInterestAverage, ModuleCombinedAverage]
+        }
+        moduledetails.push(newModule)
         tableRows.push(
             <tr key={moduleKey}>
                 <th scope="row">{module.id}</th>
@@ -131,11 +128,52 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
             </tr>
         );
     }
+
+    // Start the ranking calculations
+    moduledetails.forEach(module => {
+        module.difficulty = module.values[0];
+        module.time = module.values[1];
+        module.quality = module.values[2];
+        module.selfstudy = module.values[3];
+        module.learning = module.values[4];
+        module.interest = module.values[5];
+        module.combined = module.values[6];
+    }); 
+    // Sort the modules based on their first values in descending order
+    moduledetails.sort((a, b) => b.difficulty - a.difficulty);
+    // Assign rankings based on module
+    moduledetails.forEach((module, index) => {
+        module.difficultyranking = index + 1;
+    });    
+    // Print module rankings
+    moduledetails.forEach(module => {
+        console.log(`${module.name} ranking: ${module.difficultyranking}`);
+    });
+
+  
+    // const valueCount = moduledetails[0].values.length; // Assuming all modules have the same number of values    
+    // for (let valueIndex = 0; valueIndex < valueCount; valueIndex++) {
+    //     // Sort modules based on the value at the current index
+    //     moduledetails.sort((a, b) => b.values[valueIndex] - a.values[valueIndex]);
+    
+    //     // Assign rankings for the current value index
+    //     moduledetails.forEach((module, index) => {
+    //         module[`ranking${valueIndex + 1}`] = index + 1;
+    //     });
+    // }    
+    // // Print module rankings for each value index
+    // moduledetails.forEach(module => {
+    //     console.log(`${module.name} rankings:`, module);
+    // });
+
+    // After ranking, push the data into table rows
+    // for (const moduleKey in selectedLevelData) {
+    // }
     return tableRows;
 };
 
 
-const Charting = ({ module }) => {
+const RadarCharts = ({ module }) => {
     const dataArray = [parseFloat(getModuleDifficultyAverage(module.name)),
                         parseFloat(getModuleTimeAverage(module.name)), 
                         parseFloat(getModuleQualityAverage(module.name)),
@@ -202,11 +240,13 @@ const LevelData = ({ selectedLevel }) => {
                     </tbody>
                 </table>
                 <h5 className="text-center mb-5 display-5">Modules ranking</h5>
-                {moduleArray.map((module) => (
-                    <Charting module={module} />
-                ))}
-                {/* <Charting  selectedLevelData={selectedLevelData} /> */}
-                {/* <RankingCharts options={options} data={selectedLevelData}  /> */}
+                <div className="row mb-8">
+                    {moduleArray.map((module, index) => (
+                        <div key={index} className="col-md-3">
+                            <RadarCharts module={module} />
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     } else {
