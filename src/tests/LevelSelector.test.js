@@ -2,6 +2,15 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { toBeInTheDocument } from "@testing-library/jest-dom/matchers";
 import LevelSelector from "../components/LevelSelector";
+
+jest.mock("../modules", () => ({
+  modules: {
+    "Level 1": {},
+    "Level 2": {},
+    "Level 3": {},
+  },
+}));
+
 // Extend expect with the matcher
 expect.extend({ toBeInTheDocument }); 
 
