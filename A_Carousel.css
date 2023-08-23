@@ -1,0 +1,34 @@
+table{
+    background-color: #dcdcdc;
+    table-layout: auto;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.Acks.carousel 
+{
+    height: auto;
+}
+
+td
+{
+    text-align: center;
+    padding: 10px;
+}
+
+.Acks
+{
+    background-color: #dcdcdc;
+    height:auto;
+}
+
+.carousel-indicators
+{
+   visibility:hidden;
+}
+
+.Acks .carousel-control-next,
+.Acks .carousel-control-prev {
+    visibility: hidden;
+}
