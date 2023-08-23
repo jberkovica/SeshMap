@@ -9,27 +9,17 @@ import {
     getModuleQualityAverage,
     getModuleSelfStudyAverage,
     getModuleLearningAverage,
-    getModuleInterestAverage,
-    getModuleAppreciationAverage,
-    getModuleDifficultyTotal,
-    getModuleTimeTotal,
-    getModuleQualityTotal,
-    getModuleSelfStudyTotal,
-    getModuleLearningTotal,
-    getModuleInterestTotal,
-    getModuleCombinedTotal,
+    getModuleInterestAverage
 } from "../helpers";
+
 
 function Ranking() {
     const [selectedLevel, setSelectedLevel] = useState("Level4");
-
     const handleLevelChange = level => {
         setSelectedLevel(level);
     };
 
-    // TODO: have level4 selected by default
     // TODO: save last selection to session store?
-
     return (
         <div>
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
@@ -46,12 +36,6 @@ function Ranking() {
                                 />
                             </div>
                             <div className="col-md-6"></div>
-                            {/* <div className="col-md-6">
-                                <ModuleSelector
-                                    selectedLevel={selectedLevel}
-                                    onSelectModule={handleModuleChange}
-                                />
-                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -60,6 +44,7 @@ function Ranking() {
         </div>
     );
 }
+
 
 const displayHeader = level => {
     const levelHeaders = {
@@ -70,6 +55,7 @@ const displayHeader = level => {
 
     return levelHeaders[level] || level;
 };
+
 
 const TableWithModuleData = ({ selectedLevelData }) => {
     const tableRows = [];
@@ -91,12 +77,11 @@ const TableWithModuleData = ({ selectedLevelData }) => {
 };
 
 
-
 const TableWithModuleRanking = ({ selectedLevelData }) => {
-    // TODO: implement functions to retrive module position
+
     // TODO: implelemt sorting in table by name or ranking, can me done with react-bootstrap-table-next
     const moduledetails = []
-    const tableRows = [];        
+    const tableRows = [];    
 
     // Creating the dictionary of all modules for future ranking purposes
     for (const moduleKey in selectedLevelData) {
@@ -123,8 +108,7 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
     const metrics = ['difficulty', 'time', 'quality', 'selfstudy', 'learning', 'interest', 'total']
     for (let valueIndex = 0; valueIndex < valueCount; valueIndex++) {
         // Sort modules based on the value at the current index
-        moduledetails.sort((a, b) => b.values[valueIndex] - a.values[valueIndex]);
-    
+        moduledetails.sort((a, b) => b.values[valueIndex] - a.values[valueIndex]);    
         // Assign rankings for the current value index
         moduledetails.forEach((module, index) => {
             module[`${metrics[valueIndex]}rank`] = index + 1;
@@ -149,52 +133,13 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
             </tr>
         );
     }
-
-    // Start the ranking calculations
-    moduledetails.forEach(module => {
-        module.difficulty = module.values[0];
-        module.time = module.values[1];
-        module.quality = module.values[2];
-        module.selfstudy = module.values[3];
-        module.learning = module.values[4];
-        module.interest = module.values[5];
-        module.combined = module.values[6];
-    }); 
-    // Sort the modules based on their first values in descending order
-    moduledetails.sort((a, b) => b.difficulty - a.difficulty);
-    // Assign rankings based on module
-    moduledetails.forEach((module, index) => {
-        module.difficultyranking = index + 1;
-    });    
-    // Print module rankings
-    moduledetails.forEach(module => {
-        console.log(`${module.name} ranking: ${module.difficultyranking}`);
-    });
-
-  
-    // const valueCount = moduledetails[0].values.length; // Assuming all modules have the same number of values    
-    // for (let valueIndex = 0; valueIndex < valueCount; valueIndex++) {
-    //     // Sort modules based on the value at the current index
-    //     moduledetails.sort((a, b) => b.values[valueIndex] - a.values[valueIndex]);
-    
-    //     // Assign rankings for the current value index
-    //     moduledetails.forEach((module, index) => {
-    //         module[`ranking${valueIndex + 1}`] = index + 1;
-    //     });
-    // }    
-    // // Print module rankings for each value index
-    // moduledetails.forEach(module => {
-    //     console.log(`${module.name} rankings:`, module);
-    // });
-
-    // After ranking, push the data into table rows
-    // for (const moduleKey in selectedLevelData) {
-    // }
     return tableRows;
 };
 
 
-const RadarCharts = ({ module }) => {
+const RadarCharts = ({ module,index }) => {
+    const colorArray = ['rgba(234, 85, 69)','rgba(244, 106, 155)','rgba(239, 155, 32)','rgba(237, 191, 51)',
+    'rgba(187, 207, 50)','rgba(135, 188, 69)','rgba(39, 174, 239)','rgba(179, 61, 198)']
     const dataArray = [parseFloat(getModuleDifficultyAverage(module.name)),
                         parseFloat(getModuleTimeAverage(module.name)), 
                         parseFloat(getModuleQualityAverage(module.name)),
@@ -202,21 +147,24 @@ const RadarCharts = ({ module }) => {
                         parseFloat(getModuleLearningAverage(module.name)),
                         parseFloat(getModuleInterestAverage(module.name))];
     const labels = ['Difficulty', 'Time', 'Quality', 'Self Study', 'Learning', 'Interest'];
-    return <RadarChart dataArray={dataArray} labels={labels} title ={module.name} />;
+    return <RadarChart dataArray={dataArray} labels={labels} title ={module.name} color = {colorArray[index]}/>;
 }
 
 
 const BarChartsDisplay = ({selectedLevelData}) => {
-    const moduleArray = []
+    const moduleNameArray = []
+    const moduleIDArray = []
     for (const moduleKey in selectedLevelData){
-        moduleArray.push(selectedLevelData[moduleKey].name)
+        moduleNameArray.push(selectedLevelData[moduleKey].name)
+        moduleIDArray.push(selectedLevelData[moduleKey].id)
     }  
     const labels = ['Difficulty', 'Time', 'Quality', 'Self Study', 'Learning', 'Interest'];
     const metricArray = []
-    for (var i = 0; i < moduleArray.length; i++){
+    for (var i = 0; i < labels.length; i++){
         metricArray.push([])
     }
-    moduleArray.forEach((module) => {
+
+    moduleNameArray.forEach((module) => {
         metricArray[0].push(parseFloat(getModuleDifficultyAverage(module)))
         metricArray[1].push(parseFloat(getModuleTimeAverage(module)))
         metricArray[2].push(parseFloat(getModuleQualityAverage(module)))
@@ -224,13 +172,13 @@ const BarChartsDisplay = ({selectedLevelData}) => {
         metricArray[4].push(parseFloat(getModuleLearningAverage(module)))
         metricArray[5].push(parseFloat(getModuleInterestAverage(module)))
     });
-    for (var i = 0; i < moduleArray.length; i++){
-        // return <BarCharts module = {moduleArray[i]} metric = {labels[i]} />
-        console.log(metricArray[i])
-        return <BarChart dataArray={metricArray[i]} labels={labels} title ={labels[i]}/>
+    console.log(metricArray[4])
+    const barChartArray = []
+    for (var i = 0; i < metricArray.length; i++){
+        barChartArray.push(<div key = {labels[i]} className="col-4"> <BarChart dataArray={metricArray[i]} labels={moduleIDArray} title ={labels[i]} /> </div>) 
     } 
+    return barChartArray
 }
-
 
 
 const LevelData = ({ selectedLevel }) => {
@@ -285,26 +233,20 @@ const LevelData = ({ selectedLevel }) => {
                     <tbody>
                         <TableWithModuleRanking selectedLevelData={selectedLevelData} />
                     </tbody>
-                </table>                
+                </table>               
        
-
                 {/* Module Charts */}
                 <h5 className="text-center mb-5 display-5">Module Features</h5>
                 <div className="row mb-8">
                     {moduleArray.map((module, index) => (
                         <div key={index} className="col-md-3">
-                            <RadarCharts module={module} />
+                            <RadarCharts module={module} index = {index}/>
                         </div>
                     ))}
                 </div>
-                <h5 className="text-center mb-5 display-5">Module Comparison</h5>
+                <h5 className="text-center mb-5 display-5">Metrics Comparison</h5>
                 <div className="row mb-4">
                     <BarChartsDisplay selectedLevelData={selectedLevelData} />
-                    {/* {moduleArray.map((module, index) => (
-                        <div key={index} className="col-4">
-                            <BarCharts module={module} />
-                        </div>
-                    ))} */}
                 </div>
             </div>
         );

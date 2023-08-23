@@ -21,15 +21,17 @@ ChartJS.register(
 );
 
 
-export function RadarChart({ dataArray, labels, title }) {
+export function RadarChart({ dataArray, labels, title, color }) {
+  const backgroundAlpha = 0.5
+  const borderAlpha = 1
   const data = {
     labels: labels,
     datasets: [
       {
         label: title,
         data: dataArray,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: color.replace(')', `, ${backgroundAlpha})`),
+        borderColor: color.replace(')', `, ${borderAlpha})`),
         borderWidth: 1,
       },
     ],
