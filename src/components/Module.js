@@ -9,7 +9,7 @@ function Module() {
     }, [moduleName]);
 
     return (
-        <div className="module-container p-4">
+        <div className="module-container px-5 pt-4">
             <select
                 className="form-select mb-3"
                 onChange={e => setModuleName(e.target.value)}

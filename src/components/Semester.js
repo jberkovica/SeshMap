@@ -17,8 +17,8 @@ function Semester() {
     return (
         < div className="mb-5">
             <div className="row">
-                <div className="col-10">
-                    <h4 className="semester-title mb-5 mt-5 text-start">
+                <div className="col-12">
+                    <h4 className="mb-5 mt-5 text-start">
                         Semester 1
                     </h4>
                     <div className="semester-container p-4">
@@ -49,28 +49,9 @@ function Semester() {
                         </div>
                     </div>
                 </div>
-                <div className="col-2">
-                    <h4 className="semester-title mb-5 mt-5 text-start">Summary</h4>
-                    <SemesterSummary />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function SemesterSummary() {
-    return (
-        <div className="summary-container">
-            <div className="module-container p-3">
-                <div className="p-3">
-                    <p className="module-data mb-3">Easy</p>
-                    <p className="module-data mb-3">4-6</p>
-                    <p className="module-data mb-3">Good</p>
-                    <p className="module-data mb-3">Some</p>
-                    <p className="module-data mb-3">Good amount</p>
-                    <p className="module-data mb-3">Interesting</p>
-                    <p className="module-data mb-3">Projects (50%)</p>
-                    <p className="module-data mb-3">Projects (50%)</p>
+                <div>
+                    {/* <h4 className="mb-5 mt-5 text-start">Summary</h4> */}
+                    {/* TODO: */}
                 </div>
             </div>
         </div>

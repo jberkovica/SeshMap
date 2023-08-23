@@ -4,12 +4,3 @@
     position: relative;
     padding-top: 50px; 
 }
-
-.semester-title {
-    text-align: center;
-}
-
-.summary-container {
-    position: relative; /* Make this container relative to position its content */
-    top: -50px; /* Move it 50px up to align with modules. Adjust as needed. */
-}
