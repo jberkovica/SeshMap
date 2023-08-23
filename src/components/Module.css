@@ -1,0 +1,11 @@
+.module-container {
+    background: #EDEDED;
+    top: -100px;
+    border-radius: 8px;
+    height: fit-content;
+    position: absolute;
+}
+
+.module-data {
+    color: #161616;
+}

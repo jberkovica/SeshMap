@@ -65,13 +65,14 @@
 
 /* CSS for the sticky footer */
 .footer {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   background-color: #666666;
   color: #fff;
   text-align: center;
   padding: 10px 0;
+  margin-top: 50px;
 }
 
 .jumbotron {
