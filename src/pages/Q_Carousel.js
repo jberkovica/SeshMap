@@ -1,11 +1,11 @@
 import "./Q_Carousel.css";
-import Carousel from '../../node_modules/react-bootstrap/Carousel';
+import Carousel from 'react-bootstrap/Carousel';
 
 function Q_Carousel() 
 {
     return (
     <Carousel>
-        <Carousel.Item>
+        <Carousel.Item interval={null}>
                 <div>
                     <div id = "Slide-1">
                         <div className = "flex-container">
