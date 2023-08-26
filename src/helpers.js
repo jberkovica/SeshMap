@@ -27,8 +27,9 @@ function getModuleInterestAverage(moduleName) {
     const category = "Interest";
     return calcAverage(moduleName, category);
 }
-function getModuleCombinedAverage(moduleName) {
-    //
+function getModuleAppreciationAverage(moduleName) {
+    const category = "Appreciation";
+    return calcAverage(moduleName, category);
 }
 
 // Calculate total for each category and comparing results
@@ -91,6 +92,10 @@ function calcAverage(moduleName, category) {
         return accumulator + (valuesMap[value] || 0);
     }, 0);
 
+    if (category == 'Appreciation'){
+        // console.log('Acceptable')
+        // console.log(filteredData)
+    }
     const average = totalScore / filteredData.length;
     return average.toFixed(2);
 }
@@ -106,6 +111,10 @@ function getValuesMap(category) {
     return valuesMap;
 }
 
+function getReverseValuesMap(){
+
+}
+
 export {
     getModuleDifficultyAverage,
     getModuleTimeAverage,
@@ -113,7 +122,7 @@ export {
     getModuleSelfStudyAverage,
     getModuleLearningAverage,
     getModuleInterestAverage,
-    getModuleCombinedAverage,
+    getModuleAppreciationAverage,
     getModuleDifficultyTotal,
     getModuleTimeTotal,
     getModuleQualityTotal,
