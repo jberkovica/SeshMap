@@ -86,29 +86,53 @@ const TableWithModuleData = ({ selectedLevelData }) => {
 };
 
 
-const TableWithModuleRanking = ({ selectedLevelData }) => {
+const TableWithModuleRanking = ({ selectedLevelData }) => {  
 
-    const moduledetails = []
-    const tableRows = [];    
+    // This creates the data that will be used to calculate ranking
+    const moduledetails = React.useMemo(() => {
+        const details = [];    
+        // Creating the dictionary of all modules for future ranking purposes
+        for (const moduleKey in selectedLevelData) {
+            const module = selectedLevelData[moduleKey];
+            const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
+            const ModuleTimeAverage = parseFloat(getModuleTimeAverage(module.name))
+            const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
+            const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
+            const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
+            // const ModuleAppreciationAverage = parseFloat(getModuleAppreciationAverage(module.name))
+            const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
+            const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
+            // Create an object to be pushed into moduledetails
+            const newModule = {
+                name: module.name,
+                values: [ModuleDifficultyAverage, ModuleTimeAverage, ModuleQualityAverage, ModuleSelfStudyAverage, ModuleLearningAverage, ModuleInterestAverage, ModuleCombinedAverage]
+            }
+            details.push(newModule);            
+        }    
+        return details;
+    }, [selectedLevelData]);
 
-    // Creating the dictionary of all modules for future ranking purposes
-    for (const moduleKey in selectedLevelData) {
-        const module = selectedLevelData[moduleKey];
-        const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
-        const ModuleTimeAverage = parseFloat(getModuleTimeAverage(module.name))
-        const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
-        const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
-        const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
-        const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
-        const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
-        // Create an object to be pushed into moduledetails
-        const newModule = {
-            name: module.name,
-            values: [ModuleDifficultyAverage, ModuleTimeAverage, ModuleQualityAverage, ModuleSelfStudyAverage, ModuleLearningAverage, ModuleInterestAverage, ModuleCombinedAverage]
-        }
-        moduledetails.push(newModule)
-    }
+    // const moduledetails = []
+    // const tableRows = [];  
+    // // Creating the dictionary of all modules for future ranking purposes
+    // for (const moduleKey in selectedLevelData) {
+    //     const module = selectedLevelData[moduleKey];
+    //     const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
+    //     const ModuleTimeAverage = parseFloat(getModuleTimeAverage(module.name))
+    //     const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
+    //     const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
+    //     const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
+    //     const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
+    //     const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
+    //     // Create an object to be pushed into moduledetails
+    //     const newModule = {
+    //         name: module.name,
+    //         values: [ModuleDifficultyAverage, ModuleTimeAverage, ModuleQualityAverage, ModuleSelfStudyAverage, ModuleLearningAverage, ModuleInterestAverage, ModuleCombinedAverage]
+    //     }
+    //     moduledetails.push(newModule)
+    // }
 
+    
     // Create a variable that sees how many metrics needed to be ranked
     // Calculates the no. based on the first module and assume others are the same
     const valueCount = moduledetails[0].values.length;   
@@ -122,24 +146,115 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
         });
     }    
 
+    // Create the table itself
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: 'Module Name',
+                accessor: 'name' // string-based value accessors!
+            },
+            {
+                Header: 'Difficulty',
+                accessor: 'difficultyrank'
+            },
+            {
+                Header: 'Time',
+                accessor: 'timerank'
+            },
+            {
+                Header: 'Quality',
+                accessor: 'qualityrank'
+            },
+            {
+                Header: 'Self-Study',
+                accessor: 'selfstudyrank'
+            },
+            {
+                Header: 'Learning',
+                accessor: 'learningrank'
+            },
+            {
+                Header: 'Interest',
+                accessor: 'interestrank'
+            },
+            {
+                Header: 'Total',
+                accessor: 'totalrank'
+            },
+        ],
+        []
+    );
+    const data = React.useMemo(() => moduledetails, [moduledetails]);
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow
+    } = useTable(
+        {
+            columns,
+            data
+        },
+        useSortBy // Use the useSortBy hook here
+    );
+    return (
+        <table {...getTableProps()} className="table table-hover table-striped mb-5">
+            {/* The header that can be clicked to do sorting */}
+            <thead>
+                {headerGroups.map(headerGroup => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                        {headerGroup.headers.map(column => (
+                            <th {...column.getHeaderProps(column.getSortByToggleProps())} scope="row">
+                                {column.render('Header')}
+                                {/* Add a sort direction indicator */}
+                                <span>
+                                    {column.isSorted
+                                        ? column.isSortedDesc
+                                            ? ' 🔽'
+                                            : ' 🔼'
+                                        : ''}
+                                </span>
+                            </th>
+                        ))}
+                    </tr>
+                ))}
+            </thead>
+            {/* Contents of the table that changes based on sorting type*/}
+            <tbody {...getTableBodyProps()}>
+                {rows.map(row => {
+                    prepareRow(row);
+                    return (
+                        <tr {...row.getRowProps()}>
+                            {row.cells.map((cell,index) => (
+                                <td {...cell.getCellProps()} style={index === 0 ? { fontWeight: 'bold' } : {}}>{cell.render('Cell')}</td>
+                            ))}
+                        </tr>
+                    );
+                })}
+            </tbody>
+        </table>
+    );
+
+
     // After ranking, push the data into table rows
-    for (const moduleKey in selectedLevelData) {
-        const moduleName = selectedLevelData[moduleKey].name;
-        const extractedModule = moduledetails.find(module => module.name === moduleName)
-        tableRows.push(
-            <tr key={moduleKey}>
-                <th scope="row">{moduleName}</th>
-                <td>{extractedModule.difficultyrank}</td>
-                <td>{extractedModule.timerank}</td>
-                <td>{extractedModule.qualityrank}</td>
-                <td>{extractedModule.selfstudyrank}</td>
-                <td>{extractedModule.learningrank}</td>
-                <td>{extractedModule.interestrank}</td>
-                <td>{extractedModule.totalrank}</td>
-            </tr>
-        );
-    }
-    return tableRows;
+    // for (const moduleKey in selectedLevelData) {
+    //     const moduleName = selectedLevelData[moduleKey].name;
+    //     const extractedModule = moduledetails.find(module => module.name === moduleName)
+    //     tableRows.push(
+    //         <tr key={moduleKey}>
+    //             <th scope="row">{moduleName}</th>
+    //             <td>{extractedModule.difficultyrank}</td>
+    //             <td>{extractedModule.timerank}</td>
+    //             <td>{extractedModule.qualityrank}</td>
+    //             <td>{extractedModule.selfstudyrank}</td>
+    //             <td>{extractedModule.learningrank}</td>
+    //             <td>{extractedModule.interestrank}</td>
+    //             <td>{extractedModule.totalrank}</td>
+    //         </tr>
+    //     );
+    // }
+    // return tableRows;
 };
 
 
@@ -220,11 +335,11 @@ const LevelData = ({ selectedLevel }) => {
 
                 {/* Module ranking */}
                 <h5 className="text-center mb-5 display-5">Modules ranking</h5>
-                <table className="table table-hover table-fixed table-striped mt-5">
+                {/* <table className="table table-hover table-fixed table-striped mt-5">
                     <thead>
-                        <tr>
+                        <tr> */}
                             {/* TODO: list of headers should be the same as keys in surveys.js */}
-                            <th scope="col">Module Name</th>
+                            {/* <th scope="col">Module Name</th>
                             <th scope="col">Difficulty</th>
                             <th scope="col">Time</th>
                             <th scope="col">Quality</th>
@@ -234,10 +349,10 @@ const LevelData = ({ selectedLevel }) => {
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <TableWithModuleRanking selectedLevelData={selectedLevelData} />
-                    </tbody>
-                </table>               
+                    <tbody> */}
+                    <TableWithModuleRanking selectedLevelData={selectedLevelData} />
+                    {/* </tbody>
+                </table>                */}
        
                 {/* Module Charts */}
                 <h5 className="text-center mb-5 display-5 pt-5">Module Features</h5>

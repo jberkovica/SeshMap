@@ -38,10 +38,10 @@ export function BarChart({ dataArray, labels, title, color}){
             // legend: {
             //   position: 'top' 
             // },
-            title: {
-              display: true,
-              text: title,
-            },
+            // title: {
+            //   display: true,
+            //   text: title,
+            // },
           },
       };
       return <Bar data={data} />;
