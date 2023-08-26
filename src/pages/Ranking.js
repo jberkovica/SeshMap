@@ -3,6 +3,7 @@ import LevelSelector from "./../components/LevelSelector";
 import { RadarChart}  from "../components/RadarChart";
 import { BarChart} from "../components/BarChart";
 import { modules } from "../modules";
+import { useTable, useSortBy } from 'react-table';
 import {
     getModuleDifficultyAverage,
     getModuleTimeAverage,
@@ -13,6 +14,7 @@ import {
 } from "../helpers";
 
 
+// Main Function that Calls on all Subsequent Functions
 function Ranking() {
     const [selectedLevel, setSelectedLevel] = useState("Level4");
     const handleLevelChange = level => {
@@ -46,15 +48,22 @@ function Ranking() {
 }
 
 
+// Header to be used in main component
 const displayHeader = level => {
     const levelHeaders = {
-        Level4: "Level 4",
-        Level5: "Level 5",
-        Level6: "Level 6",
+        Level4: "LEVEL 4",
+        Level5: "LEVEL 5",
+        Level6: "LEVEL 6",
     };
 
     return levelHeaders[level] || level;
 };
+// Shared color array to be used in bar and radar charts
+const colorArray = ['rgba(234, 85, 69)','rgba(244, 106, 155)','rgba(239, 155, 32)','rgba(237, 191, 51)',
+                    'rgba(187, 207, 50)','rgba(135, 188, 69)','rgba(39, 174, 239)','rgba(179, 61, 198)', 
+                    'rgba(155, 25, 245)','rgba(220, 10, 180)','rgba(230, 0, 73)','rgba(253, 127, 111)',
+                    'rgba(230, 216, 0)','rgba(0, 191, 160)']
+
 
 
 const TableWithModuleData = ({ selectedLevelData }) => {
@@ -79,7 +88,6 @@ const TableWithModuleData = ({ selectedLevelData }) => {
 
 const TableWithModuleRanking = ({ selectedLevelData }) => {
 
-    // TODO: implelemt sorting in table by name or ranking, can me done with react-bootstrap-table-next
     const moduledetails = []
     const tableRows = [];    
 
@@ -91,7 +99,6 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
         const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
         const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
         const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
-        // const ModuleAppreciationAverage = parseFloat(getModuleAppreciationAverage(module.name))
         const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
         const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
         // Create an object to be pushed into moduledetails
@@ -127,7 +134,6 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
                 <td>{extractedModule.qualityrank}</td>
                 <td>{extractedModule.selfstudyrank}</td>
                 <td>{extractedModule.learningrank}</td>
-                {/* <td>{ModuleAppreciationAverage}</td> */}
                 <td>{extractedModule.interestrank}</td>
                 <td>{extractedModule.totalrank}</td>
             </tr>
@@ -137,9 +143,8 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
 };
 
 
+// Takes in one module and displays all information about it on a radar chart
 const RadarCharts = ({ module,index }) => {
-    const colorArray = ['rgba(234, 85, 69)','rgba(244, 106, 155)','rgba(239, 155, 32)','rgba(237, 191, 51)',
-    'rgba(187, 207, 50)','rgba(135, 188, 69)','rgba(39, 174, 239)','rgba(179, 61, 198)']
     const dataArray = [parseFloat(getModuleDifficultyAverage(module.name)),
                         parseFloat(getModuleTimeAverage(module.name)), 
                         parseFloat(getModuleQualityAverage(module.name)),
@@ -151,6 +156,7 @@ const RadarCharts = ({ module,index }) => {
 }
 
 
+// Takes in ALL modules, do calculations, and displays all information about it on a bar chart
 const BarChartsDisplay = ({selectedLevelData}) => {
     const moduleNameArray = []
     const moduleIDArray = []
@@ -172,10 +178,9 @@ const BarChartsDisplay = ({selectedLevelData}) => {
         metricArray[4].push(parseFloat(getModuleLearningAverage(module)))
         metricArray[5].push(parseFloat(getModuleInterestAverage(module)))
     });
-    console.log(metricArray[4])
     const barChartArray = []
     for (var i = 0; i < metricArray.length; i++){
-        barChartArray.push(<div key = {labels[i]} className="col-4"> <BarChart dataArray={metricArray[i]} labels={moduleIDArray} title ={labels[i]} /> </div>) 
+        barChartArray.push(<div key = {labels[i]} className="col-4"> <BarChart dataArray={metricArray[i]} labels={moduleIDArray} title ={labels[i]} color = {colorArray}/> </div>) 
     } 
     return barChartArray
 }
@@ -183,18 +188,18 @@ const BarChartsDisplay = ({selectedLevelData}) => {
 
 const LevelData = ({ selectedLevel }) => {
     // Accessing the name and code of the selected module
-    const selectedLevelData = modules[selectedLevel];
+    const selectedLevelData = modules[selectedLevel];    
     const moduleArray = []
     for (const moduleKey in selectedLevelData){
         moduleArray.push(selectedLevelData[moduleKey])
-    }    
+    }   
 
+    // The part that calls on and renders all of the table and graph components on page
     if (selectedLevelData) {
         return (
             <div className="container pt-5">
                 <h2 className="text-center mb-5 display-3">{displayHeader(selectedLevel)}</h2>
                 {/* Module comparison */}
-                {/* TODO: add sorting option by column */}
                 <h5 className="text-center mb-5 display-5">Modules comparison</h5>
                 <table className="table table-hover table-striped mb-5">
                     <thead>
@@ -219,13 +224,12 @@ const LevelData = ({ selectedLevel }) => {
                     <thead>
                         <tr>
                             {/* TODO: list of headers should be the same as keys in surveys.js */}
-                            <th scope="col">Short</th>
+                            <th scope="col">Module Name</th>
                             <th scope="col">Difficulty</th>
                             <th scope="col">Time</th>
                             <th scope="col">Quality</th>
                             <th scope="col">Self-Study</th>
                             <th scope="col">Learning</th>
-                            {/* <th scope="col">Appreciation</th> */}
                             <th scope="col">Interest</th>
                             <th scope="col">Total</th>
                         </tr>
@@ -236,7 +240,7 @@ const LevelData = ({ selectedLevel }) => {
                 </table>               
        
                 {/* Module Charts */}
-                <h5 className="text-center mb-5 display-5">Module Features</h5>
+                <h5 className="text-center mb-5 display-5 pt-5">Module Features</h5>
                 <div className="row mb-8">
                     {moduleArray.map((module, index) => (
                         <div key={index} className="col-md-3">
@@ -244,8 +248,8 @@ const LevelData = ({ selectedLevel }) => {
                         </div>
                     ))}
                 </div>
-                <h5 className="text-center mb-5 display-5">Metrics Comparison</h5>
-                <div className="row mb-4">
+                <h5 className="text-center mb-5 display-5 pt-5">Metrics Comparison</h5>
+                <div className="row mb-4 pb-5">
                     <BarChartsDisplay selectedLevelData={selectedLevelData} />
                 </div>
             </div>
