@@ -33,6 +33,7 @@
 .Box
 {
     justify-content: center;
+    border-radius: 10px;
     width: 240px;
     height: 170px;
     font-size: 13px;
