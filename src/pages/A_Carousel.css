@@ -6,6 +6,11 @@ table{
     width: 100%;
 }
 
+a {
+    text-decoration: none;
+    text-emphasis-color: black;
+}
+
 .Acks.carousel 
 {
     height: auto;
@@ -23,9 +28,13 @@ td
     height:auto;
 }
 
-.carousel-indicators
+.Acks .carousel-indicators button
 {
-   visibility:hidden;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    background-color: grey;
+    margin-bottom: 45px;
 }
 
 .Acks .carousel-control-next,
