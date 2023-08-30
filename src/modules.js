@@ -15,7 +15,7 @@ const modules = {
             blocker: true,
             slack: "https://app.slack.com/client/TDT1N1BUG/CH35RKXK8",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1005-introduction-to-programming-i",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/introduction-to-programming-i/student-notes",
             midtermPapers: "Not available",
             examPapers: "Not available",
@@ -35,7 +35,7 @@ const modules = {
             blocker: true,
             slack: "https://app.slack.com/client/TDT1N1BUG/CKNURNQKU",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1010-introduction-to-programming-ii",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/introduction-to-programming-ii/student-notes",
             midtermPapers: "Not available",
             examPapers: "Not available",
@@ -55,7 +55,7 @@ const modules = {
             blocker: true,
             slack: "https://app.slack.com/client/TDT1N1BUG/CH35SEHAS",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1015-computational-mathematics",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/computational-mathematics/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm1015-cm/past-exams/midterms",
@@ -77,7 +77,7 @@ const modules = {
             blocker: true,
             slack: "https://app.slack.com/client/TDT1N1BUG/CKZT2LKPW",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1020-discrete-mathematics",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/discrete-mathematics",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm1020-dm/past-exams/midterms",
@@ -99,7 +99,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CL275HWLF",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1025-fundamentals-of-computer-science",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/fundamentals-of-computer-science/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm1025-fcs/past-exams/midterms",
@@ -121,7 +121,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CHFR3DFBR",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1030-how-computers-work",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/how-computers-work/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm1030-hcw/past-exams/midterms",
@@ -143,7 +143,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CKZT2SR0U",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1035-algorithms-and-data-structures-i",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/algorithms-and-data-structures-i/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm1035-ads1/past-exams/midterms",
@@ -165,7 +165,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CH3L72QD8",
             repl: "https://world-class.github.io/REPL/modules/level-4/cm-1040-web-development",
-            rpl: "Yes",
+            rpl: true,
             notes: "https://github.com/world-class/notes/tree/master/level-4/web-development/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm1040-wd/past-exams/midterms",
@@ -189,7 +189,7 @@ const modules = {
             blocker: true,
             slack: "https://app.slack.com/client/TDT1N1BUG/CUKR6NR0X",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2005-object-oriented-programming",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/object-oriented-programming/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2005-oop/past-exams/midterms",
@@ -211,7 +211,7 @@ const modules = {
             blocker: true,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01A9AP06NQ",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2010-software-design-and-development",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/software-design-and-development/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2010-sdd/past-exams/midterms",
@@ -233,7 +233,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01A02PCW1K",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2015-programming-with-data",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/programming-with-data/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2015-pwd/past-exams/midterms",
@@ -255,7 +255,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01A9AR0A4C",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2020-agile-software-projects",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/agile-software-projects/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2020-asp/past-exams/midterms",
@@ -277,7 +277,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01AT0JTB7S",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2025-computer-security",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/computer-security/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2025-csec/past-exams/midterms",
@@ -299,7 +299,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CUJ0E4AA1",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2030-graphics-programming",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/graphics-programming/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2030-gp/past-exams/Midterms",
@@ -321,7 +321,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CUKR7TCDD",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2035-algorithms-and-data-structures-ii",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/algorithms-and-data-structures-ii/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2035-ads2/past-exams/midterms",
@@ -343,14 +343,14 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/CU6FK1W75",
             repl: "https://world-class.github.io/REPL/modules/level-5/cm-2040-databases-networks-and-the-web",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-5/databases-networks-and-the-web/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2040-dnw/past-exams/midterms",
             examPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2040-dnw/past-exams/finals",
         },
-        // TODO: add PWD
+
     },
     Level6: {
         DS: {
@@ -390,7 +390,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01JJ7SSML7",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3010-databases-advanced-data-techniques",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/databases-and-advanced-data-techniques/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3010-dadt/past-exams/midterms",
@@ -433,7 +433,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C012HTC1REG",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3020-artificial-intelligence",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/artificial-intelligence/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3020-ai/past-exams/midterms",
@@ -454,7 +454,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01KBKPQV3K",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3025-virtual-reality",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/virtual-reality/student-notes",
             midtermPapers: "Not available",
             examPapers: "Not available",
@@ -474,7 +474,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01JX9YQ32N",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3030-games-development",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/games-development/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3030-gd/midterms",
@@ -496,7 +496,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C011X11DW5D",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3035-advanced-web-development",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/advanced-web-development/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3035-awd/midterms",
@@ -517,7 +517,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01KBKRUM25",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3040-physical-computing-iot",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/physical-computing-and-internet-of-things/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3040-iot/midterms",
@@ -539,7 +539,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01JX9ZDLKC",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3045-3d-graphics-animation",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/3d-graphics-and-animation/student-notes",
             midtermPapers: "Not available",
             examPapers:
@@ -559,7 +559,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01KBKSFM09",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3050-mobile-development",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/mobile-development/student-notes",
             midtermPapers: "Not available",
             examPapers: "Not available",
@@ -579,7 +579,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C012QBHE72M",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3055-interaction-design",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/interaction-design/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3055-id/midterms",
@@ -600,7 +600,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01KBKTE47K",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3060-natural-language-processing",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/natural-language-processing/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3060-nlp/past-exams/midterms",
@@ -622,7 +622,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01K9UK3865",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3065-intelligent-signal-processing",
-            rpl: "No",
+            rpl: false,
             notes: "https://github.com/world-class/notes/tree/master/level-6/intelligent-signal-processing/student-notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3065-isp/midterms",
@@ -643,7 +643,7 @@ const modules = {
             blocker: false,
             slack: "https://app.slack.com/client/TDT1N1BUG/C01JS7VL0TG",
             repl: "https://world-class.github.io/REPL/modules/level-6/cm-3070-final-project",
-            rpl: "No",
+            rpl: false,
             notes: "https://world-class.github.io/REPL/modules/level-6/cm-3070-final-project/#notes",
             midtermPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm3070-fp/midterms",
