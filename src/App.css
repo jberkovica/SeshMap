@@ -1,8 +1,8 @@
 .App {
   display: flex;
   flex-direction: column;
-  /* Set minimum height of the content container */
   min-height: 100vh;
+  flex-grow: 1;
 }
 
 .navbar-custom {
@@ -28,7 +28,6 @@
 /* Customize the color of the active link */
 .navbar-custom .nav-link.active {
   color: #fff;
-  /* font-weight: bold; */
 }
 
 .navbar {
@@ -47,32 +46,20 @@
 
 
 .navbar-toggler-icon {
-  /* background-color: #fff !important; */
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-/* body {
-    font-family: 'Inter';
-} */
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
-  min-height: 100vh;
-  /* Make sure the container takes at least the viewport height */
+/* Make the html and body elements take up at least the height of the viewport */
+html, body {
+  height: 100%;
 }
 
-/* CSS for the sticky footer */
 .footer {
-  position: sticky;
-  bottom: 0;
   width: 100%;
   background-color: #666666;
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  margin-top: 50px;
 }
 
 .jumbotron {
@@ -96,5 +83,5 @@
 }
 
 .dark-mode table {
-border-color: #666666;
+  border-color: #666666;
 }
