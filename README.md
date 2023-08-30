@@ -2,7 +2,6 @@
 
 ## Table of Contents
 
-<<<<<<< HEAD
 - [Overview](#overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
