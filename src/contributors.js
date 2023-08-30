@@ -45,4 +45,4 @@ const Contributors =
 
 ];
 
-module.exports = {Contributors};
+export default Contributors;
