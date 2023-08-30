@@ -1,0 +1,24 @@
+.Main
+{
+    background-color: #DCDCDC;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Week
+{
+    text-align: center;
+    font-size: 90px;
+    height: 90px;
+    line-height: 70px;
+}
+
+.Title
+{
+    padding-top: 15px;
+    text-align: center;
+    font-size: 40px;
+    width: 100%;
+    background-color: #DCDCDC;
+    height: auto;
+}
