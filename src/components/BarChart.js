@@ -22,27 +22,64 @@ ChartJS.register(
 
 
 export function BarChart({ dataArray, labels, title, color}){
+    const backgroundAlpha = 0.6
+    const newColors = color.map((color) => {
+      return color.replace(')', `, ${backgroundAlpha})`);
+    });
     const data = {
-        responsive: true,
         labels: labels,
         datasets: [
             {
               label: title,
               data: dataArray,
-              backgroundColor: color,
-              // backgroundColor: ['rgba(234, 85, 69, 0.7)','rgba(244, 106, 155, 0.7)','rgba(239, 155, 32, 0.7)','rgba(237, 191, 51, 0.7)',
-              //                   'rgba(187, 207, 50, 0.7)','rgba(135, 188, 69, 0.7)','rgba(39, 174, 239, 0.7)','rgba(179, 61, 198, 0.7)']
+              backgroundColor: newColors
             }
-        ],
-        plugins: {
-            // legend: {
-            //   position: 'top' 
-            // },
-            // title: {
-            //   display: true,
-            //   text: title,
-            // },
-          },
-      };
-      return <Bar data={data} />;
+        ]
+      }; 
+    const titleToYAxisLabelMap = {
+        'Difficulty': ['Very Easy', 'Easy', 'Moderate', 'Difficult', 'Very Difficult'],
+        'Time': ['>10 hours', '8 - 10 hours', '6 - 8 hours', '4 - 6 hours', '2 - 4 hours', '0 - 2 hours'], 
+        'Quality': ['Very Poor', 'Poor', 'Normal', 'Good', 'Very Good'], 
+        'Self Study': ['Not At All', 'Hardly Sufficient', 'Just Sufficient', 'Mostly Sufficient', 'Totally Sufficient'],
+        'Learning': ['Nothing', 'A Little', 'A Good Amount', 'A Lot'],
+        'Interest': ['Very Boring', 'Boring', 'Fine', 'Interesting', 'Very Interesting']
+    };
+    const options = {
+      responsive: true,
+      scales: {
+        y: {            
+            // Explicitly set tick values
+            autoSkip: false,
+            beginAtZero: true,
+            min: 0,
+            max: 100,
+            stepSize: 25,
+            precision: 0,
+            ticks: {
+                source: 'data',
+                callback: function(value) {
+                  switch (value) {
+                      case 0:
+                          return titleToYAxisLabelMap[title][0];
+                      case 20:
+                          return titleToYAxisLabelMap[title][1];
+                      case 40:
+                          return titleToYAxisLabelMap[title][2];
+                      case 60:
+                          return titleToYAxisLabelMap[title][3];
+                      case 80:
+                          return titleToYAxisLabelMap[title][4];
+                      case 100:
+                          if (title == 'Time'){
+                            return titleToYAxisLabelMap[title][5];
+                          }
+                      default:
+                          return '';
+                  }
+                }
+            }
+        }
+      }
+    };
+    return <Bar data={data} options = {options}/>;
 }

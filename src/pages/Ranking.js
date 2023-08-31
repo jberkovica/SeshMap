@@ -5,12 +5,18 @@ import { BarChart} from "../components/BarChart";
 import { modules } from "../modules";
 import { useTable, useSortBy } from 'react-table';
 import {
-    getModuleDifficultyAverage,
-    getModuleTimeAverage,
-    getModuleQualityAverage,
-    getModuleSelfStudyAverage,
-    getModuleLearningAverage,
-    getModuleInterestAverage
+    // getModuleDifficultyAverage,
+    // getModuleTimeAverage,
+    // getModuleQualityAverage,
+    // getModuleSelfStudyAverage,
+    // getModuleLearningAverage,
+    // getModuleInterestAverage,
+    getModuleDifficultyAverageNormalized,
+    getModuleTimeAverageNormalized,
+    getModuleQualityAverageNormalized,
+    getModuleSelfStudyAverageNormalized,
+    getModuleLearningAverageNormalized,
+    getModuleInterestAverageNormalized
 } from "../helpers";
 
 
@@ -94,13 +100,12 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
         // Creating the dictionary of all modules for future ranking purposes
         for (const moduleKey in selectedLevelData) {
             const module = selectedLevelData[moduleKey];
-            const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
-            const ModuleTimeAverage = parseFloat(getModuleTimeAverage(module.name))
-            const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
-            const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
-            const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
-            // const ModuleAppreciationAverage = parseFloat(getModuleAppreciationAverage(module.name))
-            const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
+            const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverageNormalized(module.name))
+            const ModuleTimeAverage = parseFloat(getModuleTimeAverageNormalized(module.name))
+            const ModuleQualityAverage = parseFloat(getModuleQualityAverageNormalized(module.name))
+            const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverageNormalized(module.name))
+            const ModuleLearningAverage = parseFloat(getModuleLearningAverageNormalized(module.name))
+            const ModuleInterestAverage = parseFloat(getModuleInterestAverageNormalized(module.name))
             const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
             // Create an object to be pushed into moduledetails
             const newModule = {
@@ -111,27 +116,7 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
         }    
         return details;
     }, [selectedLevelData]);
-
-    // const moduledetails = []
-    // const tableRows = [];  
-    // // Creating the dictionary of all modules for future ranking purposes
-    // for (const moduleKey in selectedLevelData) {
-    //     const module = selectedLevelData[moduleKey];
-    //     const ModuleDifficultyAverage = parseFloat(getModuleDifficultyAverage(module.name))
-    //     const ModuleTimeAverage = parseFloat(getModuleTimeAverage(module.name))
-    //     const ModuleQualityAverage = parseFloat(getModuleQualityAverage(module.name))
-    //     const ModuleSelfStudyAverage = parseFloat(getModuleSelfStudyAverage(module.name))
-    //     const ModuleLearningAverage = parseFloat(getModuleLearningAverage(module.name))
-    //     const ModuleInterestAverage = parseFloat(getModuleInterestAverage(module.name))
-    //     const ModuleCombinedAverage = (ModuleDifficultyAverage+ModuleTimeAverage+ModuleQualityAverage+ModuleSelfStudyAverage+ModuleInterestAverage)/5
-    //     // Create an object to be pushed into moduledetails
-    //     const newModule = {
-    //         name: module.name,
-    //         values: [ModuleDifficultyAverage, ModuleTimeAverage, ModuleQualityAverage, ModuleSelfStudyAverage, ModuleLearningAverage, ModuleInterestAverage, ModuleCombinedAverage]
-    //     }
-    //     moduledetails.push(newModule)
-    // }
-
+    
     
     // Create a variable that sees how many metrics needed to be ranked
     // Calculates the no. based on the first module and assume others are the same
@@ -211,8 +196,8 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
                                 <span>
                                     {column.isSorted
                                         ? column.isSortedDesc
-                                            ? ' 🔽'
-                                            : ' 🔼'
+                                            ? ' \u25BC'  //downward pointing
+                                            : ' \u25B3'  //upward pointing
                                         : ''}
                                 </span>
                             </th>
@@ -235,37 +220,17 @@ const TableWithModuleRanking = ({ selectedLevelData }) => {
             </tbody>
         </table>
     );
-
-
-    // After ranking, push the data into table rows
-    // for (const moduleKey in selectedLevelData) {
-    //     const moduleName = selectedLevelData[moduleKey].name;
-    //     const extractedModule = moduledetails.find(module => module.name === moduleName)
-    //     tableRows.push(
-    //         <tr key={moduleKey}>
-    //             <th scope="row">{moduleName}</th>
-    //             <td>{extractedModule.difficultyrank}</td>
-    //             <td>{extractedModule.timerank}</td>
-    //             <td>{extractedModule.qualityrank}</td>
-    //             <td>{extractedModule.selfstudyrank}</td>
-    //             <td>{extractedModule.learningrank}</td>
-    //             <td>{extractedModule.interestrank}</td>
-    //             <td>{extractedModule.totalrank}</td>
-    //         </tr>
-    //     );
-    // }
-    // return tableRows;
 };
 
 
 // Takes in one module and displays all information about it on a radar chart
 const RadarCharts = ({ module,index }) => {
-    const dataArray = [parseFloat(getModuleDifficultyAverage(module.name)),
-                        parseFloat(getModuleTimeAverage(module.name)), 
-                        parseFloat(getModuleQualityAverage(module.name)),
-                        parseFloat(getModuleSelfStudyAverage(module.name)),
-                        parseFloat(getModuleLearningAverage(module.name)),
-                        parseFloat(getModuleInterestAverage(module.name))];
+    const dataArray = [parseFloat(getModuleDifficultyAverageNormalized(module.name)),
+                        parseFloat(getModuleTimeAverageNormalized(module.name)), 
+                        parseFloat(getModuleQualityAverageNormalized(module.name)),
+                        parseFloat(getModuleSelfStudyAverageNormalized(module.name)),
+                        parseFloat(getModuleLearningAverageNormalized(module.name)),
+                        parseFloat(getModuleInterestAverageNormalized(module.name))];
     const labels = ['Difficulty', 'Time', 'Quality', 'Self Study', 'Learning', 'Interest'];
     return <RadarChart dataArray={dataArray} labels={labels} title ={module.name} color = {colorArray[index]}/>;
 }
@@ -286,12 +251,12 @@ const BarChartsDisplay = ({selectedLevelData}) => {
     }
 
     moduleNameArray.forEach((module) => {
-        metricArray[0].push(parseFloat(getModuleDifficultyAverage(module)))
-        metricArray[1].push(parseFloat(getModuleTimeAverage(module)))
-        metricArray[2].push(parseFloat(getModuleQualityAverage(module)))
-        metricArray[3].push(parseFloat(getModuleSelfStudyAverage(module)))
-        metricArray[4].push(parseFloat(getModuleLearningAverage(module)))
-        metricArray[5].push(parseFloat(getModuleInterestAverage(module)))
+        metricArray[0].push(parseFloat(getModuleDifficultyAverageNormalized(module)))
+        metricArray[1].push(parseFloat(getModuleTimeAverageNormalized(module)))
+        metricArray[2].push(parseFloat(getModuleQualityAverageNormalized(module)))
+        metricArray[3].push(parseFloat(getModuleSelfStudyAverageNormalized(module)))
+        metricArray[4].push(parseFloat(getModuleLearningAverageNormalized(module)))
+        metricArray[5].push(parseFloat(getModuleInterestAverageNormalized(module)))
     });
     const barChartArray = []
     for (var i = 0; i < metricArray.length; i++){
@@ -334,25 +299,9 @@ const LevelData = ({ selectedLevel }) => {
                 </table>
 
                 {/* Module ranking */}
-                <h5 className="text-center mb-5 display-5">Modules ranking</h5>
-                {/* <table className="table table-hover table-fixed table-striped mt-5">
-                    <thead>
-                        <tr> */}
-                            {/* TODO: list of headers should be the same as keys in surveys.js */}
-                            {/* <th scope="col">Module Name</th>
-                            <th scope="col">Difficulty</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Quality</th>
-                            <th scope="col">Self-Study</th>
-                            <th scope="col">Learning</th>
-                            <th scope="col">Interest</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody> */}
-                    <TableWithModuleRanking selectedLevelData={selectedLevelData} />
-                    {/* </tbody>
-                </table>                */}
+                <h5 className="text-center mb-5 display-5">Modules ranking</h5>   
+                <TableWithModuleRanking selectedLevelData={selectedLevelData} />
+     
        
                 {/* Module Charts */}
                 <h5 className="text-center mb-5 display-5 pt-5">Module Features</h5>
