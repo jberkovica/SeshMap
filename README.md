@@ -15,8 +15,6 @@
 
 SeshMap is a web application designed to help students of BSc Computer Science from Goldsmiths, University of London, plan their academic life effectively. Whether it's planning their modules choices or getting study resources, SeshMap offers an intuitive platform to improve student's life.
 
-This project is inspired by "Going Next Level" sheets by [Florent Vaucher](https://github.com/Artachtron).
-
 ## Features
 
 - **Home Page**: See a summary of SeshMap 
