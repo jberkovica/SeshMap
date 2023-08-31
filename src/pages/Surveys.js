@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LevelSelector from "./../components/LevelSelector";
 import { modules } from "../modules";
+import "./Surveys.css";
 
 function Surveys() {
     const [selectedLevel, setSelectedLevel] = useState("Level4");
@@ -131,22 +132,21 @@ const SurveyTable = ({ selectedLevel }) => {
                         ))}
                     </tbody>
             </table>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
+            <div className="button-container">
                 {!isFirstQuestion ? (
-                            <button onClick={handlePreviousQuestion}>Back</button>
+                            <button className="btn btn-primary"  onClick={handlePreviousQuestion}>Back</button>
                         ) : (
                             <div></div> // Placeholder div to keep the space occupied. Don't delete!
                         )}
                 {isLastQuestion && <input type="email" placeholder="Key in your email here" />}
                 {isLastQuestion ? (
-                    <button>Submit</button>
+                    <button className="btn btn-primary" >Submit</button>
                 ) : (
-                    <button onClick={handleNextQuestion}>Next Question</button>
+                    <button className="btn btn-primary" onClick={handleNextQuestion}>Next Question</button>
                 )}
             </div>
         </div>
     );
 };
-
 
 export default Surveys;
