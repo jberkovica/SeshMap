@@ -55,9 +55,7 @@ const SurveyTable = ({ selectedLevel }) => {
     for (const moduleKey in selectedLevelData) {
         levelData.push(selectedLevelData[moduleKey].name)
     }    
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    // This one keeps track of user survey input (if we want this to be functional eventually)
-    // const [selectedOptions, setSelectedOptions] = useState({});    
+    const [currentQuestion, setCurrentQuestion] = useState(0); 
 
     const questionHeaders = [
         ['Very Easy', 'Easy', 'Moderate', 'Difficult', 'Very Difficult'],
@@ -76,22 +74,14 @@ const SurveyTable = ({ selectedLevel }) => {
         'How interesting did you find these modules?'
     ];
 
-    // const handleOptionChange = (row, index) => {
-    //     setSelectedOptions((prev) => ({
-    //         ...prev,
-    //         [row]: index
-    //     }));
-    // };
 
     const handleNextQuestion = () => {
-        // setSelectedOptions({});
         if (currentQuestion < questionHeaders.length - 1) {
             setCurrentQuestion(currentQuestion + 1);
         }
     };
 
     const handlePreviousQuestion = () => {
-        // setSelectedOptions({});
         if (currentQuestion > 0) {
             setCurrentQuestion(currentQuestion - 1);
         }
@@ -123,8 +113,6 @@ const SurveyTable = ({ selectedLevel }) => {
                                         <input
                                             type="radio"
                                             name={`${row}-${currentQuestion}`}
-                                            // checked={selectedOptions[row] === index}
-                                            // onChange={() => handleOptionChange(row, index)}
                                         />
                                     </td>
                                 ))}
