@@ -1,71 +1,35 @@
 import jsonData from "./parsedData.json";
-import surveyValues from "./surveys";
+import valuesMap from "./surveysValues";
 
-// Calculate average
-
-function getModuleDifficultyAverage(moduleName) {
+function getModuleDifficultyAverageNormalized(moduleName) {
     const category = "Course Difficulty";
-    return calcAverage(moduleName, category);
+    return calcNormalizedAverage(moduleName, category);
 }
-function getModuleTimeAverage(moduleName) {
+
+function getModuleTimeAverageNormalized(moduleName) {
     const category = "Time";
-    return calcAverage(moduleName, category);
+    return calcNormalizedAverage(moduleName, category);
 }
-function getModuleQualityAverage(moduleName) {
+
+function getModuleQualityAverageNormalized(moduleName) {
     const category = "Quality";
-    return calcAverage(moduleName, category);
+    return calcNormalizedAverage(moduleName, category);
 }
-function getModuleSelfStudyAverage(moduleName) {
+
+function getModuleSelfStudyAverageNormalized(moduleName) {
     const category = "Self-Learning";
-    return calcAverage(moduleName, category);
+    return calcNormalizedAverage(moduleName, category);
 }
-function getModuleLearningAverage(moduleName) {
+
+function getModuleLearningAverageNormalized(moduleName) {
     const category = "Learning";
-    return calcAverage(moduleName, category);
+    return calcNormalizedAverage(moduleName, category);
 }
-function getModuleInterestAverage(moduleName) {
+
+function getModuleInterestAverageNormalized(moduleName) {
     const category = "Interest";
-    return calcAverage(moduleName, category);
+    return calcNormalizedAverage(moduleName, category);
 }
-function getModuleAppreciationAverage(moduleName) {
-    const category = "Appreciation";
-    return calcAverage(moduleName, category);
-}
-
-// Calculate total for each category and comparing results
-// to sort modules from best to worst in each category
-
-// TODO: add level 6 categories
-
-function getModuleDifficultyTotal(moduleName) {
-    const category = "Course Difficulty";
-    return calcTotal(moduleName, category);
-}
-function getModuleTimeTotal(moduleName) {
-    const category = "Time";
-    return calcTotal(moduleName, category);
-}
-function getModuleQualityTotal(moduleName) {
-    const category = "Quality";
-    return calcTotal(moduleName, category);
-}
-function getModuleSelfStudyTotal(moduleName) {
-    const category = "Self-Learning";
-    return calcTotal(moduleName, category);
-}
-function getModuleLearningTotal(moduleName) {
-    const category = "Learning";
-    return calcTotal(moduleName, category);
-}
-function getModuleInterestTotal(moduleName) {
-    const category = "Interest";
-    return calcTotal(moduleName, category);
-}
-function getModuleCombinedTotal(moduleName) {
-    // TODO:
-}
-
-// Helper functions
 
 function filterData(moduleName, category) {
     // Extract the data for the specified module and category
@@ -74,60 +38,28 @@ function filterData(moduleName, category) {
     return moduleData.filter(value => value !== "Not applicable" && value !== "");
 }
 
-// Calculate the total score for the module
-function calcTotal(moduleName, category) {
+function calcNormalizedAverage(moduleName, category) {
     const filteredData = filterData(moduleName, category);
-    const valuesMap = getValuesMap(category);
+    const values = valuesMap[category];
+    const maxValue = Math.max(...Object.values(values));
     const totalScore = filteredData.reduce((accumulator, value) => {
-        return accumulator + (valuesMap[value] || 0);
+        return accumulator + (values[value] || 0);
     }, 0);
 
-    return totalScore;
-}
-
-function calcAverage(moduleName, category) {
-    const filteredData = filterData(moduleName, category);
-    const valuesMap = getValuesMap(category);
-    const totalScore = filteredData.reduce((accumulator, value) => {
-        return accumulator + (valuesMap[value] || 0);
-    }, 0);
-
-    if (category == 'Appreciation'){
-        // console.log('Acceptable')
-        // console.log(filteredData)
-    }
-    const average = totalScore / filteredData.length;
-    return average.toFixed(2);
-}
-
-function getValuesMap(category) {
-    const values = surveyValues[category];
-    const valuesMap = {};
-
-    values.forEach((value, index) => {
-        valuesMap[value] = index;
-    });
-
-    return valuesMap;
-}
-
-function getReverseValuesMap(){
-
+    // maxValue * filteredData.length is the maximum possible total score that
+    // could be obtained if every value in filteredData had the maximum possible score
+    // Therefore, (totalScore / (maxValue * filteredData.length)) is the fraction
+    // of the maximum possible total score that was actually obtained.
+    // Multiplying this by 100 converts this fraction to a percentage.
+    const normalizedAverage = (totalScore / (maxValue * filteredData.length)) * 100;
+    return normalizedAverage.toFixed(2);
 }
 
 export {
-    getModuleDifficultyAverage,
-    getModuleTimeAverage,
-    getModuleQualityAverage,
-    getModuleSelfStudyAverage,
-    getModuleLearningAverage,
-    getModuleInterestAverage,
-    getModuleAppreciationAverage,
-    getModuleDifficultyTotal,
-    getModuleTimeTotal,
-    getModuleQualityTotal,
-    getModuleSelfStudyTotal,
-    getModuleLearningTotal,
-    getModuleInterestTotal,
-    getModuleCombinedTotal,
+    getModuleDifficultyAverageNormalized,
+    getModuleTimeAverageNormalized,
+    getModuleQualityAverageNormalized,
+    getModuleSelfStudyAverageNormalized,
+    getModuleLearningAverageNormalized,
+    getModuleInterestAverageNormalized,
 };

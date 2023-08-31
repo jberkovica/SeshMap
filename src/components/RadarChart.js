@@ -22,8 +22,8 @@ ChartJS.register(
 
 
 export function RadarChart({ dataArray, labels, title, color }) {
-  const backgroundAlpha = 0.5
-  const borderAlpha = 1
+  const backgroundAlpha = 0.5;
+  const borderAlpha = 1;
   const data = {
     labels: labels,
     datasets: [
@@ -33,8 +33,20 @@ export function RadarChart({ dataArray, labels, title, color }) {
         backgroundColor: color.replace(')', `, ${backgroundAlpha})`),
         borderColor: color.replace(')', `, ${borderAlpha})`),
         borderWidth: 1,
+        pointRadius: 4
       },
     ],
   };
-  return <Radar data={data} />;
+  const options = {
+    scales: {
+      r: {
+        angleLines: {
+          display: false,
+        },
+        suggestedMin: 0,
+        suggestedMax: 100,
+      },
+    },
+  };
+  return <Radar data={data} options={options}/>;
 }

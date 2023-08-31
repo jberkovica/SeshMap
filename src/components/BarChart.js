@@ -1,48 +1,62 @@
-import React from 'react';
+import React from "react";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import valuesMap from "../surveysValues";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+export function BarChart({ dataArray, labels, title, color }) {
+    const backgroundAlpha = 0.6;
+    const newColors = color.map(color => {
+        return color.replace(")", `, ${backgroundAlpha})`);
+    });
 
-
-export function BarChart({ dataArray, labels, title, color}){
     const data = {
-        responsive: true,
         labels: labels,
         datasets: [
             {
-              label: title,
-              data: dataArray,
-              backgroundColor: color,
-              // backgroundColor: ['rgba(234, 85, 69, 0.7)','rgba(244, 106, 155, 0.7)','rgba(239, 155, 32, 0.7)','rgba(237, 191, 51, 0.7)',
-              //                   'rgba(187, 207, 50, 0.7)','rgba(135, 188, 69, 0.7)','rgba(39, 174, 239, 0.7)','rgba(179, 61, 198, 0.7)']
-            }
+                label: title,
+                data: dataArray,
+                backgroundColor: newColors,
+            },
         ],
-        plugins: {
-            // legend: {
-            //   position: 'top' 
-            // },
-            // title: {
-            //   display: true,
-            //   text: title,
-            // },
-          },
-      };
-      return <Bar data={data} />;
+    };
+
+    const labelsMap = valuesMap[title];
+    const yLabels = labelsMap ? Object.keys(labelsMap) : [];
+
+    // const stepSize = 100 / yLabels.length;
+    const stepSize = 20;
+
+    const options = {
+        responsive: true,
+        scales: {
+            y: {
+                autoSkip: false,
+                beginAtZero: true,
+                min: 0,
+                max: 100,
+                stepSize: stepSize,
+                precision: 0,
+                ticks: {
+                    callback: function (value, index, values) {
+                        if (value % stepSize === 0) {
+                            return yLabels[value / stepSize];
+                        }
+                        return null;
+                    },
+                },
+            },
+        },
+    };
+
+    return <Bar data={data} options={options} />;
 }
