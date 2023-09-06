@@ -9,3 +9,11 @@
 .module-data {
     color: #161616;
 }
+
+.dark-mode .module-container {
+    background: #595959;
+}
+
+.dark-mode .module-container p {
+    color: #ffffff;
+}
