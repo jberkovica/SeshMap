@@ -1,8 +1,9 @@
 import React from "react";
 import "./Semester.css";
 import Module from "./Module";
+// import SemesterSummary from "./SemesterSummary";
 
-function Semester() {
+function Semester({ id }) {
     const headers = [
         "Difficulty",
         "Time",
@@ -15,12 +16,10 @@ function Semester() {
     ];
 
     return (
-        < div className="mb-5">
+        <div className="mb-5">
             <div className="row">
                 <div className="col-12">
-                    <h4 className="mb-5 mt-5 text-start">
-                        Semester 1
-                    </h4>
+                    <h4 className="mb-5 mt-5 text-start">Semester {id + 1}</h4>
                     <div className="semester-container p-4">
                         <div className="row">
                             <div className="col-2">
@@ -33,26 +32,25 @@ function Semester() {
                             <div className="col-10">
                                 <div className="row">
                                     <div className="col position-relative">
-                                        <Module />
+                                        <Module id={`Semester${id}-Module0`} />
                                     </div>
                                     <div className="col position-relative">
-                                        <Module />
+                                        <Module id={`Semester${id}-Module1`} />
                                     </div>
                                     <div className="col position-relative">
-                                        <Module />
+                                        <Module id={`Semester${id}-Module2`} />
                                     </div>
                                     <div className="col position-relative">
-                                        <Module />
+                                        <Module id={`Semester${id}-Module3`} />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    {/* <h4 className="mb-5 mt-5 text-start">Summary</h4> */}
-                    {/* TODO: */}
-                </div>
+                {/* TODO: implement Summary */}
+                {/* <h4 className="mb-5 mt-5 text-start">Summary</h4>
+                <SemesterSummary /> */}
             </div>
         </div>
     );

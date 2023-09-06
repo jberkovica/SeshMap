@@ -55,6 +55,38 @@ function calcNormalizedAverage(moduleName, category) {
     return normalizedAverage.toFixed(2);
 }
 
+function getModuleValueByCategory(moduleName, category) {
+    const average = calcNormalizedAverage(moduleName, category);
+    // retrieve values for category
+    const values = valuesMap[category];
+
+    // values example
+    // "Final Difficulty": {
+    //     "Very Easy": 1, -> 20%
+    //     "Easy": 2, -> 40%
+    //     "Moderate": 3, -> 60%
+    //     "Difficult": 4, -> 80%
+    //     "Very Difficult": 5, -> 100%
+    // },
+
+    const step = Math.round(100 / Object.keys(values).length);
+
+    let textValue = "-"; // default value for module component
+
+    const keys = Object.keys(values);
+    for (let index = 0; index < keys.length; index++) {
+        console.log(average, step * (index + 1));
+        if (average <= step * (index + 1)) {
+            // found value
+            console.log("inside if");
+            textValue = keys[index];
+            break; // Exit the loop when the condition is met
+        }
+    }
+
+    return textValue;
+}
+
 export {
     getModuleDifficultyAverageNormalized,
     getModuleTimeAverageNormalized,
@@ -62,4 +94,5 @@ export {
     getModuleSelfStudyAverageNormalized,
     getModuleLearningAverageNormalized,
     getModuleInterestAverageNormalized,
+    getModuleValueByCategory,
 };

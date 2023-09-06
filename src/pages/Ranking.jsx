@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LevelSelector from "./../components/LevelSelector";
+import LevelSelector from "../components/LevelSelector";
 import { RadarChart } from "../components/RadarChart";
 import { BarChart } from "../components/BarChart";
 import { modules } from "../modules";

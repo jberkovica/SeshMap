@@ -350,7 +350,6 @@ const modules = {
             examPapers:
                 "https://github.com/world-class/binary-assets/tree/master/modules/cm2040-dnw/past-exams/finals",
         },
-
     },
     Level6: {
         DS: {
@@ -661,6 +660,14 @@ const getModulesForLevel = levelName => {
     return Object.keys(modulesByLevel);
 };
 
+const getAllModules = () => {
+    let allModuleNames = [];
+    for (const levelModules of Object.values(modules)) {
+        allModuleNames = [...allModuleNames, ...Object.keys(levelModules)];
+    }
+    return allModuleNames;
+};
+
 // Function to find a module by name
 const findModuleByName = moduleName => {
     for (const levelModules of Object.values(modules)) {
@@ -675,4 +682,4 @@ const findModuleByName = moduleName => {
     return null; // Module not found
 };
 
-export { modules, getModulesForLevel, findModuleByName };
+export { modules, getModulesForLevel, getAllModules, findModuleByName };
