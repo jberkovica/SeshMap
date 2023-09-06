@@ -80,11 +80,6 @@ function SessionPlanner() {
                     </div>
                 </div>
             </div>
-            {/* <div className="container">
-                {semesters.map((semester, index) => (
-                    <Semester key={index} id={index} />
-                ))}
-            </div> */}
             <div className="container mt-5">
                 {semesters.map((semester, index) => (
                     <div key={index} className="position-relative">
