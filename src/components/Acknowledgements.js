@@ -28,6 +28,8 @@ const buildNameRow = index => {
 const buildTable = index => {
     var rows = [];
     for (var i = index; i < index + 3; ++i) {
+
+        
         rows.push(nameRows[i]);
     }
     nameTables.push(<table class="Names">{rows}</table>);
@@ -66,3 +68,70 @@ function A_Carousel() {
 }
 
 export default A_Carousel;
+
+
+
+// const nameRows = [];
+// let nameTables = [];  // Make it let so we can re-assign it later
+
+// const buildNameRow = index => {
+//     var rowData = [];
+//     for (var i = index; i < index + 5; ++i) {
+//         rowData.push(
+//             <td>
+//                 <Person /> <a href={Contributors[i].link}>{Contributors[i].name}</a>
+//             </td>
+//         );
+//     }
+//     nameRows.push(<tr>{rowData}</tr>);
+// };
+
+// const buildTable = index => {
+//     var rows = [];
+//     for (var i = index; i < index + 3; ++i) {
+//         rows.push(nameRows[i]);
+//     }
+//     nameTables.push(<table className="Names">{rows}</table>);
+// };
+
+// function A_Carousel() {
+//     // Reset nameTables to ensure it starts empty each time this component renders
+//     nameTables = [];
+
+//     for (let i = 0; i < Contributors.length; ++i) {
+//         if (i % 5 === 0) {
+//             buildNameRow(i);
+//         }
+//     }
+
+//     for (let i = 0; i < nameRows.length; ++i) {
+//         if (i % 3 === 0) {
+//             buildTable(i);
+//         }
+//     }
+
+//     // Wrap nameTables with a div with the class "table-container"
+//     nameTables = [
+//         <div className="table-container">
+//             {nameTables}
+//         </div>
+//     ];
+
+//     return (
+//         <>
+//             <Carousel className="Acks">
+//                 <Carousel.Item interval={null}>
+//                     <div>{nameTables[0]}</div>
+//                 </Carousel.Item>
+//                 <Carousel.Item interval={null}>
+//                     <div>{nameTables[1]}</div>
+//                 </Carousel.Item>
+//                 <Carousel.Item interval={null}>
+//                     <div>{nameTables[2]}</div>
+//                 </Carousel.Item>
+//             </Carousel>
+//         </>
+//     );
+// }
+
+// export default A_Carousel;
