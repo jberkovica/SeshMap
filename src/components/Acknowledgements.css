@@ -1,5 +1,5 @@
-table {
-    background-color: #dcdcdc;
+.table-container table {
+    /* background-color: #dcdcdc; */
     table-layout: auto;
     text-align: center;
     padding: 5px;
@@ -24,16 +24,16 @@ td
 
 .Acks
 {
-    background-color: #dcdcdc;
+    /* background-color: #dcdcdc; */
     height:auto;
 }
 
 .Acks .carousel-indicators button
 {
     border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    background-color: grey;
+    height: 15px;
+    width: 15px;
+    /* background-color: grey; */
     margin-bottom: 45px;
 }
 

@@ -1,6 +1,6 @@
 .Main
 {
-    background-color: #DCDCDC;
+    /* background-color: #DCDCDC; */
     display: flex;
     justify-content: space-evenly;
 }
@@ -19,6 +19,6 @@
     text-align: center;
     font-size: 40px;
     width: 100%;
-    background-color: #DCDCDC;
+    /* background-color: #DCDCDC; */
     height: auto;
 }

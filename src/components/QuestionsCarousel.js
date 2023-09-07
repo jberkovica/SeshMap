@@ -8,8 +8,9 @@ function Q_Carousel() {
                 <div>
                     <div id="Slide-1">
                         <div className="flex-container">
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25" >
                                 <div className="BoxHeader">What is Seshmap?</div>
+                                <br></br>
                                 <div className="BoxContent">
                                     Seshmap is an intuitive session planning utility
                                     designed by students for students, specifically
@@ -17,7 +18,7 @@ function Q_Carousel() {
                                     degree.
                                 </div>
                             </div>
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">
                                     How can Seshmap help me?
                                 </div>
@@ -29,8 +30,9 @@ function Q_Carousel() {
                                     session.
                                 </div>
                             </div>
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">How does it work?</div>
+                                <br></br>
                                 <div className="BoxContent">
                                     Find the courses that you are interested in from
                                     the Resources tab, make a note of your tentative
@@ -38,7 +40,7 @@ function Q_Carousel() {
                                     your upcoming semesters based on the data.
                                 </div>
                             </div>
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">Sample FAQ</div>
                                 <div className="BoxContent">ANSWER</div>
                             </div>
@@ -51,19 +53,19 @@ function Q_Carousel() {
                 <div>
                     <div id="Slide-1">
                         <div className="flex-container">
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">Sample FAQ</div>
                                 <div className="BoxContent">ANSWER</div>
                             </div>
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">Sample FAQ</div>
                                 <div className="BoxContent">ANSWER</div>
                             </div>
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">Sample FAQ</div>
                                 <div className="BoxContent">ANSWER</div>
                             </div>
-                            <div className="Box">
+                            <div className="Box bg-secondary bg-opacity-25">
                                 <div className="BoxHeader">Sample FAQ</div>
                                 <div className="BoxContent">ANSWER</div>
                             </div>

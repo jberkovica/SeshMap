@@ -29,40 +29,42 @@ function Home() {
     const Week = currentWeek();
 
     return (
-        <>
-            <div>
-                <div className="bg-secondary bg-opacity-25 p-5 rounded-lg text-left">
-                    <div className="Main">
-                        <div>
-                            <h1>Welcome to SeshMap!</h1>
-                            <p>
-                                SeshMap is your one-stop resource and planning hub,
-                                for all things<br></br>
-                                related to the online University of London BSc.
-                                Computer Science degree!
-                            </p>
-                            <p>
-                                All information related to modules can be found
-                                across these pages; you may also browse <br></br>
-                                through course-specific data to make informed
-                                decisions about your next session.
-                            </p>
-                        </div>
-                        <div className="Week">
-                            <h4 className="display-6">week</h4>
-                            {Week}
-                        </div>
+        
+        <div> 
+            <div className="bg-secondary bg-opacity-25 p-5 rounded-lg text-left">
+                <div className="Main">
+                    <div>
+                        <h1>Welcome to SeshMap!</h1>
+                        <p>
+                            SeshMap is your one-stop resource and planning hub,
+                            for all things<br></br>
+                            related to the online University of London BSc.
+                            Computer Science degree!
+                        </p>
+                        <p>
+                            All information related to modules can be found
+                            across these pages; you may also browse <br></br>
+                            through course-specific data to make informed
+                            decisions about your next session.
+                        </p>
                     </div>
-                </div>
-                <Q_Carousel />
-                <div className="bg-secondary bg-opacity-25">
-                    <div className="Title">
-                        <h3>Acknowledgements</h3>
+                    <div className="Week">
+                        <h4 className="display-6">week</h4>
+                        {Week}
                     </div>
-                    <A_Carousel />
                 </div>
             </div>
-        </>
+            <div className='container'> 
+                <Q_Carousel />
+            </div>
+            <div className="bg-secondary bg-opacity-25">
+                <div className="Title">
+                    <h3>Acknowledgements</h3>
+                </div>
+                <A_Carousel />
+            </div>
+        </div>
+        
     );
 }
 
