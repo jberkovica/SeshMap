@@ -35,6 +35,7 @@ function Home() {
                 <div className="Main">
                     <div>
                         <h1>Welcome to SeshMap!</h1>
+                        <br></br>
                         <p>
                             SeshMap is your one-stop resource and planning hub,
                             for all things<br></br>

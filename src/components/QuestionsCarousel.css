@@ -7,7 +7,7 @@
 
 .carousel{
   margin:auto;
-  padding-top: 45px;
+  padding-top: 35px;
   vertical-align:middle;
   width: 100%;
 }
@@ -26,6 +26,7 @@
 {
     font-size: 16px;
     font-weight: bold;
+    padding: 0.5rem;
 }
 
 .Box
@@ -33,7 +34,7 @@
     justify-content: center;
     border-radius: 10px;
     width: 240px;
-    height: 170px;
+    /* height: 170px; */
     font-size: 13px;
     text-align: center;
     background-color: #DCDCDC;
@@ -45,15 +46,20 @@
 {
     display: flex;
     margin: auto;
-    justify-content: center;
+    justify-content: space-around;
+    max-width:60rem;
 }
 
 .BoxContent
 {
-    text-align: center;
+    text-align: left;
     overflow-wrap: normal;
     font-size: 13px;
     font-weight: normal;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
 }
 
 .carousel-caption{
