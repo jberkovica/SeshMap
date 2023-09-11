@@ -1,76 +1,16 @@
-.slidebox {
-    width: 300px;
-    border: 5px solid gray;
-    padding: 10 px;
-    margin: 10px;
+.questions-card {
+    border-radius: 3%;
 }
 
-.carousel{
-  margin:auto;
-  padding-top: 35px;
-  vertical-align:middle;
-  width: 100%;
+.questions-block {
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.carousel-inner {
-    height: 240px;
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23999999'%3E%3Cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
 }
 
-.carousel-caption
-{
-    text-align: left;
-    text-decoration-color: white;
-}
-
-.BoxHeader
-{
-    font-size: 16px;
-    font-weight: bold;
-    padding: 0.5rem;
-}
-
-.Box
-{
-    justify-content: center;
-    border-radius: 10px;
-    width: 240px;
-    /* height: 170px; */
-    font-size: 13px;
-    text-align: center;
-    background-color: #DCDCDC;
-    margin: 15px;
-    padding: 5px;
-}
-
-.flex-container 
-{
-    display: flex;
-    margin: auto;
-    justify-content: space-around;
-    max-width:60rem;
-}
-
-.BoxContent
-{
-    text-align: left;
-    overflow-wrap: normal;
-    font-size: 13px;
-    font-weight: normal;
-    padding-top: 0.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-bottom: 1rem;
-}
-
-.carousel-caption{
-    color: black;
-    top: 50%;
-}
-
-.carousel-control-next,
-.carousel-control-prev /*, .carousel-indicators */ {
-  filter: invert(100%);
-  max-width: 100%;
-  width: 50px;
-  vertical-align: middle;
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23999999'%3E%3Cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
 }

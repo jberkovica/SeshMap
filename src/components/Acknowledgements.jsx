@@ -4,9 +4,8 @@ import Contributors from "../contributors.js";
 import { ReactComponent as Person } from "../assets/person.svg";
 import "./Acknowledgements.css";
 
-
 const nameRows = [];
-const nameTables = [];  
+const nameTables = [];
 
 const buildNameRow = index => {
     var rowData = [];
@@ -28,7 +27,7 @@ const buildTable = index => {
     nameTables.push(<table className="Names">{rows}</table>);
 };
 
-function A_Carousel() {
+function AcknowledgementsCarousel() {
     // IMPO! Reset nameTablesWrapper to ensure it starts empty each time this component renders
     let nameTablesWrapper = [];
 
@@ -46,16 +45,15 @@ function A_Carousel() {
 
     // Wrap nameTables with a div with the class "table-container"
     // Key part so we can target tables within 'table-container' only
-    for (let i = 0; i < nameTables.length; ++i){
+    for (let i = 0; i < nameTables.length; ++i) {
         nameTablesWrapper[i] = [
-        <div className="table-container">
-            {nameTables[i]}
-        </div>
+            <div className="table-container">{nameTables[i]}</div>,
         ];
-    }    
+    }
 
     return (
-        <>
+        <div className="bg-secondary bg-opacity-25 mt-3">
+            <h3 className="text-center pt-5">Acknowledgements</h3>
             <Carousel className="Acks">
                 <Carousel.Item interval={null}>
                     <div>{nameTablesWrapper[0]}</div>
@@ -67,8 +65,8 @@ function A_Carousel() {
                     <div>{nameTablesWrapper[2]}</div>
                 </Carousel.Item>
             </Carousel>
-        </>
+        </div>
     );
 }
 
-export default A_Carousel;
+export default AcknowledgementsCarousel;
