@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Semester from "../components/Semester";
+import "./SessionPlanner.css";
 
 function SessionPlanner() {
+    const initialSemesters = JSON.parse(
+        sessionStorage.getItem("semesters") || "[{}]" // start with 1 semester
+    );
+    const [semesters, setSemesters] = useState(initialSemesters);
+
+    useEffect(() => {
+        sessionStorage.setItem("semesters", JSON.stringify(semesters));
+    }, [semesters]);
+
+    const onAddButton = () => {
+        setSemesters([...semesters, {}]); // add a new semester object to the state
+    };
+
+    const onRemoveButton = semesterIndex => {
+        const updatedSemesters = [...semesters];
+        updatedSemesters.splice(semesterIndex, 1);
+        setSemesters(updatedSemesters);
+
+        // Remove related items from sessionStorage
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            if (key && key.startsWith(`Semester${semesterIndex}-`)) {
+                sessionStorage.removeItem(key);
+                i--; // Adjust index because the length of sessionStorage decreased
+            }
+        }
+    };
+
     return (
         <div>
             <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
@@ -51,14 +80,23 @@ function SessionPlanner() {
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <Semester />
-                <Semester />
-                <Semester />
+            <div className="container mt-5">
+                {semesters.map((semester, index) => (
+                    <div key={index} className="position-relative">
+                        <i
+                            className="bi bi-x-circle fs-4 text-secondary position-absolute top-0 end-0"
+                            onClick={() => onRemoveButton(index)}
+                        ></i>
+                        <Semester id={index} />
+                    </div>
+                ))}
             </div>
 
             <div className="d-flex justify-content-center align-items-center mt-5">
-                <i className="bi bi-plus-circle fs-3 text-primary"></i>
+                <i
+                    className="bi bi-plus-circle fs-1 text-primary"
+                    onClick={onAddButton}
+                ></i>
             </div>
         </div>
     );

@@ -105,10 +105,9 @@ function App() {
                     <Route path="/ranking" element={<Ranking />} />
                     <Route path="/surveys" element={<Surveys />} />
                 </Routes>
-
-                <div className="footer">
-                    <small>All rights reserved @UoL 2023</small>
-                </div>
+            </div>
+            <div className="footer">
+                <small>All rights reserved @UoL 2023</small>
             </div>
         </Router>
     );

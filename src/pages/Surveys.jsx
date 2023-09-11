@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LevelSelector from "./../components/LevelSelector";
+import LevelSelector from "../components/LevelSelector";
 import { modules } from "../modules";
 import "./Surveys.css";
 

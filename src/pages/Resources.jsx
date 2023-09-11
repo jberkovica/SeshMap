@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ModuleSelector from "./../components/ModuleSelector";
-import LevelSelector from "./../components/LevelSelector";
+import ModuleSelector from "../components/ModuleSelector";
+import LevelSelector from "../components/LevelSelector";
 import { findModuleByName } from "../modules";
 
 function Resources() {
