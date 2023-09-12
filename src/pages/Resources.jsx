@@ -4,7 +4,7 @@ import LevelSelector from "../components/LevelSelector";
 import { findModuleByName } from "../modules";
 
 function Resources() {
-    const [selectedLevel, setSelectedLevel] = useState("Level4");
+    const [selectedLevel, setSelectedLevel] = useState("");
     const [selectedModule, setSelectedModule] = useState("CM");
 
     const handleLevelChange = level => {
@@ -70,6 +70,7 @@ const ModuleData = ({ selectedModule }) => {
                 <Specification selectedModuleData={selectedModuleData} />
                 <Slack selectedModuleData={selectedModuleData} />
                 <Repl selectedModuleData={selectedModuleData} />
+                <Notes selectedModuleData={selectedModuleData} />
                 <Midterm selectedModuleData={selectedModuleData} />
                 <Final selectedModuleData={selectedModuleData} />
             </div>
@@ -193,10 +194,8 @@ const Repl = ({ selectedModuleData }) => {
     );
 };
 
-// TODO: improve midterm and final logic so there is link on past papers only if there are exams
-
 const Midterm = ({ selectedModuleData }) => {
-    const midtermURL = selectedModuleData?.midterm;
+    const midtermURL = selectedModuleData?.midtermPapers;
 
     return (
         <div className="row p-5">
@@ -220,7 +219,7 @@ const Midterm = ({ selectedModuleData }) => {
 };
 
 const Final = ({ selectedModuleData }) => {
-    const finalsURL = selectedModuleData?.final;
+    const finalsURL = selectedModuleData?.examPapers;
 
     return (
         <div className="row p-5">
@@ -243,7 +242,33 @@ const Final = ({ selectedModuleData }) => {
     );
 };
 
+const Notes = ({ selectedModuleData }) => {
+    const notesURL = selectedModuleData?.notes;
+
+    return (
+        <div className="row p-5">
+            <div className="col-md-3">
+                <h4 className="text-start">Notes</h4>
+            </div>
+            <div className="col-md-6">
+                <p>
+                    Useful notes, screenshots of lectures, summaries and additional
+                    readings compiled by students and professors.
+                </p>
+            </div>
+            <div className="col-md-3 text-end">
+                {notesURL && (
+                    <a href={notesURL} target="_blank" rel="noopener noreferrer">
+                        <button type="button" className="btn btn-primary">
+                            Open
+                        </button>
+                    </a>
+                )}
+            </div>
+        </div>
+    );
+};
+
 // TODO: add notes components
-// TODO: maybe should add all data (like professor, language, etc) without buttons?
 
 export default Resources;
