@@ -672,7 +672,6 @@ const getAllModules = () => {
 const findModuleByName = moduleName => {
     for (const levelModules of Object.values(modules)) {
         const foundModule = Object.values(levelModules).find(module => {
-            // console.log("module.name ", module.name, "moduleName ", moduleName);
             return module.id === moduleName;
         });
         if (foundModule) {

@@ -75,10 +75,8 @@ function getModuleValueByCategory(moduleName, category) {
 
     const keys = Object.keys(values);
     for (let index = 0; index < keys.length; index++) {
-        console.log(average, step * (index + 1));
         if (average <= step * (index + 1)) {
             // found value
-            console.log("inside if");
             textValue = keys[index];
             break; // Exit the loop when the condition is met
         }
