@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import contributors from "../contributors.js";
 import { ReactComponent as Person } from "../assets/person.svg";
 import "./Acknowledgements.css";
 
 function AcknowledgementsCarousel() {
-    const slideLength = 15;
-    const rowLength = 5;
-
-    const slidesCount = Math.ceil(contributors.length / slideLength);
-
+    const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 991); // calculare slides and rows for big/small screen
     const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setSmallScreen(window.innerWidth <= 991);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const slideLength = smallScreen ? 10 : 15;
+    const rowLength = smallScreen ? 2 : 5;
+    const slidesCount = Math.ceil(contributors.length / slideLength);
 
     const toggleSlide = index => {
         setCurrentSlide(index);
@@ -56,7 +68,13 @@ function AcknowledgementsCarousel() {
                                             .map(ack => (
                                                 <div className="col" key={ack.name}>
                                                     <Person />
-                                                    <a href={ack.link}>{ack.name}</a>
+                                                    <a
+                                                        href={ack.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        {ack.name}
+                                                    </a>
                                                 </div>
                                             ))}
                                     </div>

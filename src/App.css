@@ -85,3 +85,49 @@ html, body {
 .dark-mode table {
   border-color: #666666;
 }
+
+/* @media (max-width: 991px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+
+  .navbar-collapse.show {
+    display: flex !important;
+  }
+} */
+
+/* Styles for large screens */
+@media (min-width: 992px) {
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .nav-link {
+    margin-right: 30px;
+  }
+
+  .navbar-collapse {
+    flex-basis: auto;
+  }
+}
+
+/* Styles for small screens */
+@media (max-width: 991px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .nav-link {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .navbar-collapse {
+    flex-basis: 100%;
+  }
+
+  .navbar {
+    height: auto;
+  }
+}
