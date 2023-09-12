@@ -28,8 +28,8 @@ This project is inspired by "Going Next Level" sheets by [Florent Vaucher](https
 ## Technologies Used
 
 - Frontend: React, Bootstrap
-- Backend: Firebase
-- Database: Modules CSV data, csv-parser
+- Backend: Not there yet, but initial plan to use Firebase
+- Database: Not there yet, currently parsing static csv and json data
 
 ## Installation
 
