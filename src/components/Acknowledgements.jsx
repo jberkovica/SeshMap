@@ -1,70 +1,71 @@
-import React from "react";
-import Carousel from "react-bootstrap/Carousel";
-import Contributors from "../contributors.js";
+import React, { useState } from "react";
+import contributors from "../contributors.js";
 import { ReactComponent as Person } from "../assets/person.svg";
 import "./Acknowledgements.css";
 
-const nameRows = [];
-const nameTables = [];
-
-const buildNameRow = index => {
-    var rowData = [];
-    for (var i = index; i < index + 5; ++i) {
-        rowData.push(
-            <td>
-                <Person /> <a href={Contributors[i].link}>{Contributors[i].name}</a>
-            </td>
-        );
-    }
-    nameRows.push(<tr>{rowData}</tr>);
-};
-
-const buildTable = index => {
-    var rows = [];
-    for (var i = index; i < index + 3; ++i) {
-        rows.push(nameRows[i]);
-    }
-    nameTables.push(<table className="Names">{rows}</table>);
-};
-
 function AcknowledgementsCarousel() {
-    // IMPO! Reset nameTablesWrapper to ensure it starts empty each time this component renders
-    let nameTablesWrapper = [];
+    const slideLength = 15;
+    const rowLength = 5;
 
-    for (let i = 0; i < Contributors.length; ++i) {
-        if (i % 5 === 0) {
-            buildNameRow(i);
-        }
-    }
+    const slidesCount = Math.ceil(contributors.length / slideLength);
 
-    for (let i = 0; i < nameRows.length; ++i) {
-        if (i % 3 === 0) {
-            buildTable(i);
-        }
-    }
+    const [currentSlide, setCurrentSlide] = useState(0);
 
-    // Wrap nameTables with a div with the class "table-container"
-    // Key part so we can target tables within 'table-container' only
-    for (let i = 0; i < nameTables.length; ++i) {
-        nameTablesWrapper[i] = [
-            <div className="table-container">{nameTables[i]}</div>,
-        ];
-    }
+    const toggleSlide = index => {
+        setCurrentSlide(index);
+    };
 
     return (
-        <div className="bg-secondary bg-opacity-25 mt-3">
-            <h3 className="text-center pt-5">Acknowledgements</h3>
-            <Carousel className="Acks">
-                <Carousel.Item interval={null}>
-                    <div>{nameTablesWrapper[0]}</div>
-                </Carousel.Item>
-                <Carousel.Item interval={null}>
-                    <div>{nameTablesWrapper[1]}</div>
-                </Carousel.Item>
-                <Carousel.Item interval={null}>
-                    <div>{nameTablesWrapper[2]}</div>
-                </Carousel.Item>
-            </Carousel>
+        <div className="bg-secondary bg-opacity-25 mt-3 pb-5">
+            <h3 className="text-center pt-5 pb-3">Acknowledgements</h3>
+            <div className="carousel slide pb-5">
+                <div className="carousel-indicators">
+                    {Array.from({ length: slidesCount }).map((_, index) => (
+                        <button
+                            key={index}
+                            type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to={index}
+                            className={index === currentSlide ? "active" : ""}
+                            aria-current={index === currentSlide ? "true" : "false"}
+                            aria-label={`Slide ${index + 1}`}
+                            onClick={() => toggleSlide(index)}
+                        ></button>
+                    ))}
+                </div>
+                <div className="carousel-inner text-center">
+                    <div className="container">
+                        {Array.from({ length: slidesCount }).map((_, slideIndex) => (
+                            <div
+                                className={`carousel-item ${
+                                    slideIndex === currentSlide ? "active" : ""
+                                }`}
+                                key={slideIndex}
+                            >
+                                {Array.from({
+                                    length: Math.ceil(slideLength / rowLength),
+                                }).map((_, rowIndex) => (
+                                    <div className="row mt-3" key={rowIndex}>
+                                        {contributors
+                                            .slice(
+                                                slideIndex * slideLength +
+                                                    rowIndex * rowLength,
+                                                slideIndex * slideLength +
+                                                    (rowIndex + 1) * rowLength
+                                            )
+                                            .map(ack => (
+                                                <div className="col" key={ack.name}>
+                                                    <Person />
+                                                    <a href={ack.link}>{ack.name}</a>
+                                                </div>
+                                            ))}
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

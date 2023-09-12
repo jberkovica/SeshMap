@@ -1,43 +1,14 @@
-.table-container table {
-    /* background-color: #dcdcdc; */
-    table-layout: auto;
-    text-align: center;
-    padding: 5px;
-    width: 100%;
+.carousel-indicators {
+    bottom: -2rem;
 }
 
-a {
+/* style for the names */
+.carousel .col a {
     text-decoration: none;
-    text-emphasis-color: black;
+    color: inherit;
+    margin-left: 0.5rem;
 }
 
-.Acks.carousel 
-{
-    height: auto;
-}
-
-td
-{
-    text-align: center;
-    padding: 10px;
-}
-
-.Acks
-{
-    /* background-color: #dcdcdc; */
-    height:auto;
-}
-
-.Acks .carousel-indicators button
-{
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-    /* background-color: grey; */
-    margin-bottom: 45px;
-}
-
-.Acks .carousel-control-next,
-.Acks .carousel-control-prev {
-    visibility: hidden;
+.carousel .col a:hover {
+    text-decoration: underline;
 }

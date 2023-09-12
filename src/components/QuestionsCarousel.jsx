@@ -58,7 +58,10 @@ function QuestionsCarousel() {
                         <div className="row questions-block mt-3">
                             {visibleFaq.map(function (q, index) {
                                 return (
-                                    <div className="col bg-secondary bg-opacity-25 m-3 p-5 questions-card">
+                                    <div
+                                        className="col bg-secondary bg-opacity-25 m-3 p-5 questions-card"
+                                        key={index}
+                                    >
                                         <h5 className="mb-3">{q.question}</h5>
                                         <p>{q.answer}</p>
                                     </div>
