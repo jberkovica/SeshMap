@@ -19,11 +19,8 @@ import "./App.css";
 function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    // TODO: save dark mode state to session store
-
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
-        // You can apply your dark theme styles here
     };
     return (
         <Router>
@@ -37,6 +34,7 @@ function App() {
                                 className="navbar-logo"
                             />
                         </Link>
+                        {/* TODO: implement menu toggle */}
                         {/* <button
                             className="navbar-toggler"
                             type="button"
