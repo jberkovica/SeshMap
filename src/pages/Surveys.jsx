@@ -5,6 +5,8 @@ import "./Surveys.css";
 
 function Surveys() {
     const [selectedLevel, setSelectedLevel] = useState("Level4");
+    console.log('Selected level is: ')
+    console.log (selectedLevel)
     const handleLevelChange = level => {
         setSelectedLevel(level);
     };
@@ -53,7 +55,7 @@ const SurveyTable = ({ selectedLevel }) => {
     const selectedLevelData = modules[selectedLevel];
     const levelData = []; 
     for (const moduleKey in selectedLevelData) {
-        levelData.push(selectedLevelData[moduleKey].name)
+        levelData.push(selectedLevelData[moduleKey].name)        
     }    
     const [currentQuestion, setCurrentQuestion] = useState(0); 
 
