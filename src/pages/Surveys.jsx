@@ -5,8 +5,6 @@ import "./Surveys.css";
 
 function Surveys() {
     const [selectedLevel, setSelectedLevel] = useState("Level4");
-    console.log('Selected level is: ')
-    console.log (selectedLevel)
     const handleLevelChange = level => {
         setSelectedLevel(level);
     };
