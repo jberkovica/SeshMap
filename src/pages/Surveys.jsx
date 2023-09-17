@@ -94,7 +94,7 @@ const SurveyTable = ({ selectedLevel }) => {
         <div>
             <h2 className="text-center mb-5 display-3">{displayHeader(selectedLevel)}</h2>
             <h5>Question {currentQuestion + 1}/{questionHeaders.length}</h5>
-            <text className= "pb-5">{questionArray[currentQuestion]}</text>
+            <p className= "pb-5">{questionArray[currentQuestion]}</p>
             <table className="table table-hover table-striped mb-5">
                 <thead>
                     <tr>
