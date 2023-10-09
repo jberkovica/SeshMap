@@ -6,7 +6,7 @@ import "./Home.css";
 /** currentWeek code is taken from Denis Bakunovitch's "what week is it anyway"
  web application.*/
 function currentWeek() {
-    const dateFrom = new Date("2023-04-17"); // last semester start date
+    const dateFrom = new Date("2023-10-09"); // last semester start date
 
     const dateTo = new Date();
     let w = Math.ceil((dateTo - dateFrom) / (1000 * 60 * 60 * 24 * 7));
