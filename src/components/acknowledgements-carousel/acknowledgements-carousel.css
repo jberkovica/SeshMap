@@ -1,0 +1,14 @@
+.carousel-indicators {
+    bottom: -2rem;
+}
+
+/* style for the names */
+.carousel .col a {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 0.5rem;
+}
+
+.carousel .col a:hover {
+    text-decoration: underline;
+}

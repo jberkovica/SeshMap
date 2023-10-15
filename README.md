@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Contribution Guidelines](#contribution-guidelines)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
+-   [Overview](#overview)
+-   [Features](#features)
+-   [Technologies Used](#technologies-used)
+-   [Installation](#installation)
+-   [Contribution Guidelines](#contribution-guidelines)
+-   [License](#license)
+-   [Acknowledgements](#acknowledgements)
+-   [Contact](#contact)
 
 ## Overview
 
@@ -19,35 +19,38 @@ This project is inspired by "Going Next Level" sheets by [Florent Vaucher](https
 
 ## Features
 
-- **Home Page**: See a summary of SeshMap 
-- **Session Planner**: Plan your semester
-- **Resources**: Get resources to improve your studies
-- **Ranking**: See the modules rankings
-- **Surveys**: Provide us data to continue refining the modules rankings
+-   **Home Page**: See a summary of SeshMap
+-   **Session Planner**: Plan your semester
+-   **Resources**: Get resources to improve your studies
+-   **Ranking**: See the modules rankings
+-   **Surveys**: Provide us data to continue refining the modules rankings
 
 ## Technologies Used
 
-- Frontend: React, Bootstrap
-- Backend: Not there yet, but initial plan to use Firebase
-- Database: Not there yet, currently parsing static csv and json data
+-   Frontend: React, Bootstrap
+-   Backend: Not there yet, but initial plan to use Firebase
+-   Database: Not there yet, currently parsing static csv and json data
 
 ## Installation
 
 1. Clone the repository
+
     ```
     git clone https://github.com/jberkovica/SeshMap.git
     ```
 
 2. Navigate to the project directory
+
     ```
     cd SeshMap
     ```
 
 3. Install dependencies
+
     ```
     npm install
     ```
-  
+
 4. Start the development server
     ```
     npm start
@@ -63,9 +66,9 @@ This project is licensed under the MIT License.
 
 ## Acknowledgements
 
-- [University of London](https://www.london.ac.uk/)
-- [Goldsmiths](https://www.gold.ac.uk/)
-- [Mentors and Advisors](#)
+-   [University of London](https://www.london.ac.uk/)
+-   [Goldsmiths](https://www.gold.ac.uk/)
+-   [Mentors and Advisors](#)
 
 ## Contact
 
