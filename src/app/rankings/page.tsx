@@ -1,10 +1,10 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { LevelSelector } from '@/components/level-selector';
-import { RadarChart } from '@/components/radar-chart';
-import { BarChart } from '@/components/bar-chart';
-import { modules, ModuleType } from '@/components/module/utils';
 import { useTable, useSortBy } from 'react-table';
+import { BarChart } from '@/components/bar-chart';
+import { LevelSelector } from '@/components/level-selector';
+import { modules, ModuleType } from '@/components/module/utils';
+import { RadarChart } from '@/components/radar-chart';
 import {
     getModuleDifficultyAverageNormalized,
     getModuleTimeAverageNormalized,

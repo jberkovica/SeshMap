@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { DarkModeButton } from '@/components/dark-mode-button';
+import Link from 'next/link';
+import { DarkModeButton } from './dark-mode-button';
 
 export function Navbar() {
     return (

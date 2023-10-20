@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { ModuleSelector } from '@/components/module/module-selector';
 import { LevelSelector } from '@/components/level-selector';
+import { ModuleSelector } from '@/components/module/module-selector';
 import { findModuleByName, ModuleType } from '@/components/module/utils';
 
 function Resources() {

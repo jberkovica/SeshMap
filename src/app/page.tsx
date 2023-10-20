@@ -1,5 +1,5 @@
-import { QuestionsCarousel } from '@/components/question-carousel';
 import { AcknowledgementsCarousel } from '@/components/acknowledgements-carousel';
+import { QuestionsCarousel } from '@/components/question-carousel';
 import './home.css';
 
 /** currentWeek code is taken from Denis Bakunovitch's "what week is it anyway"

@@ -1,7 +1,11 @@
-const fs = require("fs");
-const csvParser = require("csv-parser");
+const csvParser = require('csv-parser');
+const fs = require('fs');
 
-const files = ["src/data/Level4.csv", "src/data/Level5.csv", "src/data/Level6.csv"];
+const files = [
+    'src/data/Level4.csv',
+    'src/data/Level5.csv',
+    'src/data/Level6.csv',
+];
 
 const jsonData = {};
 
@@ -21,15 +25,15 @@ const pushValueToData = (module, category, value) => {
 };
 
 // Function to process a CSV file
-const processFile = file => {
+const processFile = (file) => {
     return new Promise((resolve, reject) => {
         fs.createReadStream(file)
             .pipe(csvParser())
-            .on("data", data => {
+            .on('data', (data) => {
                 // Iterate through each column (except the timestamp)
                 for (const columnName in data) {
                     // Iterate through each column (except the timestamp)
-                    if (columnName !== "Timestamp") {
+                    if (columnName !== 'Timestamp') {
                         const regex = /^(.*?)\s*\[(.*?)\]$/;
                         const matches = columnName.match(regex);
 
@@ -39,11 +43,11 @@ const processFile = file => {
 
                             // convert data to have same headers
                             if (
-                                category === "Difficulty" ||
-                                category === "Course Material Difficulty"
+                                category === 'Difficulty' ||
+                                category === 'Course Material Difficulty'
                             ) {
                                 // convert
-                                category = "Course Difficulty";
+                                category = 'Course Difficulty';
                             }
 
                             const value = data[columnName];
@@ -55,22 +59,22 @@ const processFile = file => {
                     }
                 }
             })
-            .on("end", () => {
+            .on('end', () => {
                 console.log(`CSV data from ${file} parsed.`);
                 resolve();
             })
-            .on("error", error => {
+            .on('error', (error) => {
                 reject(error);
             });
     });
 };
 
-Promise.all(files.map(file => processFile(file)))
+Promise.all(files.map((file) => processFile(file)))
     .then(() => {
         const finalParsedData = JSON.stringify(jsonData, null, 2);
-        fs.writeFileSync("src/parsedData.json", finalParsedData);
-        console.log("Merged and combined data saved to parsedData.json.");
+        fs.writeFileSync('src/parsedData.json', finalParsedData);
+        console.log('Merged and combined data saved to parsedData.json.');
     })
-    .catch(error => {
-        console.error("An error occurred:", error);
+    .catch((error) => {
+        console.error('An error occurred:', error);
     });

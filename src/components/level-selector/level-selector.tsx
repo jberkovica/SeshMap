@@ -1,5 +1,5 @@
-import { modules } from '../module/utils';
 import { ChangeEventHandler } from 'react';
+import { modules } from '../module/utils';
 
 export type LevelSelectorProps = {
     onSelectLevel(level: string): void;

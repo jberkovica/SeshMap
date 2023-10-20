@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import './module.css';
-import { ModuleSelector } from './module-selector';
 import { getModuleValueByCategory } from '@/utils/helpers';
+import { ModuleSelector } from './module-selector';
 import { findModuleByName, ModuleType } from './utils';
 
 export type ModuleProps = {
