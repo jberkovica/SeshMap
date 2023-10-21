@@ -16,6 +16,7 @@
         "@testing-library/jest-dom": "^6.1.4",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.5.1",
+        "@types/luxon": "^3.3.3",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
@@ -43,10 +44,7 @@
         "vitest": "^0.34.6"
     },
     "dependencies": {
-        "@types/luxon": "^3.3.3",
-        "bootstrap-icons": "^1.11.1",
         "chart.js": "^4.4.0",
-        "clsx": "^2.0.0",
         "luxon": "^3.4.3",
         "next": "13.5.4",
         "react": "^18",
