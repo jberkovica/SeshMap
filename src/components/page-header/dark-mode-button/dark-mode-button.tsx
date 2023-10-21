@@ -24,6 +24,7 @@ export function DarkModeButton() {
 
     return (
         <button
+            aria-label="Dark mode button"
             data-testid="DarkModeButton"
             className="p-1 text-white"
             onClick={toggleDarkMode}
