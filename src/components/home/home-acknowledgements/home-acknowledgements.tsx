@@ -11,7 +11,7 @@ export function HomeAcknowledgements() {
                 <h2 className="mb-10 text-center text-2xl font-medium">
                     Acknowledgements
                 </h2>
-                <div className="grid grid-cols-2 justify-items-start gap-3 md:grid-cols-3 lg:grid-cols-4">
+                <div className="grid grid-cols-2 justify-items-start gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     {contributors.map(({ name, link }) => (
                         <ContributorLink key={link} name={name} href={link} />
                     ))}
