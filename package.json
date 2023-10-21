@@ -10,7 +10,7 @@
         "lint:quiet": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
         "prettier": "npx prettier --write '**/*.{json,html,css,graphql,yml,md}'",
         "prettier:quiet": "npx prettier --write --loglevel silent '**/*.{json,html,css,graphql,yml,md}'",
-        "test": "vitest"
+        "test": "TZ=UTC vitest"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^6.1.4",
