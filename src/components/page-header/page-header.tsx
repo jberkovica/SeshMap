@@ -8,7 +8,7 @@ export function PageHeader() {
     return (
         <header className="bg-gradient-to-r from-indigo-500 to-pink-400 py-4 lg:py-10">
             <div className="container mx-auto flex flex-col justify-between lg:flex-row">
-                <Link href="/" className="navbar-brand">
+                <Link href={Route.home}>
                     <Image
                         src="/seshmap-logo.png"
                         alt="Logo"
