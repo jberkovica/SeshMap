@@ -25,7 +25,7 @@ export function DarkModeButton() {
     return (
         <button
             data-testid="DarkModeButton"
-            className="text-white"
+            className="p-1 text-white"
             onClick={toggleDarkMode}
         >
             {isDarkMode ? (

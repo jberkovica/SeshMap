@@ -1,12 +1,11 @@
 import { AcknowledgementsCarousel } from '@/components/acknowledgements-carousel';
-import { HomeBanner } from '@/components/home';
-import { QuestionsCarousel } from '@/components/question-carousel';
+import { HomeBanner, HomeQuestions } from '@/components/home';
 
 export default function Home() {
     return (
         <main>
             <HomeBanner />
-            <QuestionsCarousel />
+            <HomeQuestions />
             <AcknowledgementsCarousel />
         </main>
     );
