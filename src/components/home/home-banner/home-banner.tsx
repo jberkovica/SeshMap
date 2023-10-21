@@ -4,7 +4,7 @@ import { semesterStartDate } from '@/consts/datetime';
 export function HomeBanner() {
     return (
         <div
-            className="bg-neutral-200 text-black dark:bg-neutral-500 dark:text-white"
+            className="bg-neutral-200 text-black dark:bg-neutral-600 dark:text-white"
             data-testid="HomeBanner"
         >
             <div className="container flex justify-between py-10">
