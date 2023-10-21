@@ -16,7 +16,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="en">
-            <body className={clsx(inter.className, 'dark:bg-neutral-700')}>
+            <body
+                className={clsx(
+                    inter.className,
+                    'flex min-h-screen flex-col dark:bg-neutral-700 [&>main]:flex-1'
+                )}
+            >
                 <PageHeader />
                 {children}
                 <PageFooter />

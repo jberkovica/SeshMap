@@ -2,7 +2,10 @@ import { HomeQuestionCard } from './home-question-card';
 
 export function HomeQuestions() {
     return (
-        <section className="container flex flex-col items-stretch gap-8 py-7 md:flex-row">
+        <section
+            className="container flex flex-col items-stretch gap-8 py-7 md:flex-row"
+            data-testid="HomeQuestions"
+        >
             {homeFaqs.map(({ question, answer }) => (
                 <HomeQuestionCard
                     key={question}

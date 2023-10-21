@@ -1,4 +1,4 @@
-const contributors = [
+export const contributors: { name: string; link: string }[] = [
     // Table 1
     { name: 'Jekaterina', link: 'https://github.com/jberkovica' },
     { name: 'Rizwana', link: 'https://github.com/rizwanaxjpeg' },
@@ -7,7 +7,7 @@ const contributors = [
     { name: 'Shikhar', link: 'https://github.com/Shikhar-S1ngh' },
 
     { name: 'Florent', link: 'https://github.com/Artachtron' },
-    { name: 'Justim', link: 'https://github.com/angle943' },
+    { name: 'Justin', link: 'https://github.com/angle943' },
     { name: 'REPL', link: 'https://github.com/world-class/REPL#contributors' },
     { name: 'Ankush', link: 'https://github.com/ankush' },
     { name: 'Sébastien', link: 'https://github.com/sglavoie' },
@@ -44,5 +44,3 @@ const contributors = [
     //  {name: "Blair", link: ""},
     //  {name: "Stacy", link: ""},
 ];
-
-export default contributors;
