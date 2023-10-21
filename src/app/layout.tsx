@@ -2,6 +2,7 @@ import './globals.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { PageFooter } from '@/components/page-footer';
 import { PageHeader } from '@/components/page-header';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,13 +20,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <div className="App">
-                    <PageHeader />
-                    {children}
-                </div>
-                <div className="footer">
-                    <small>All rights reserved @UoL 2023</small>
-                </div>
+                <PageHeader />
+                {children}
+                <PageFooter />
             </body>
         </html>
     );
