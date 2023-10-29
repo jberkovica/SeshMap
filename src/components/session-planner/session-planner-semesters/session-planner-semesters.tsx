@@ -1,9 +1,14 @@
 'use client';
+
+import { useEffect, useState } from 'react';
 import { BsPlusCircle } from 'react-icons/bs';
 import { Semester } from './semester';
 import { useSemesters } from './use-semesters';
 
 export function SessionPlannerSemesters() {
+    // Adding for hydration issues
+    // https://github.com/facebook/react/issues/25627#issuecomment-1444073227
+    const [isMounted, setIsMounted] = useState<boolean>(false);
     const {
         addNewSemester,
         changeCourseInSemester,
@@ -11,7 +16,11 @@ export function SessionPlannerSemesters() {
         removeSemester,
     } = useSemesters();
 
-    return (
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    return !isMounted ? null : (
         <section
             className="container my-12"
             data-testid="SessionPlannerSemesters"

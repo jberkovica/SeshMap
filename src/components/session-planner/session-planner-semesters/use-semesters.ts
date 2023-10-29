@@ -5,14 +5,17 @@ import { CourseState, SemesterState } from './types';
 export const SEMESTERS_KEY = 'semesters';
 
 export const useSemesters = () => {
-    const initialSemesters = getInitialSemesters(
-        localStorage.getItem(SEMESTERS_KEY)
-    );
+    let initialSemestersFromLocal = null;
+    if (typeof window !== 'undefined') {
+        initialSemestersFromLocal = localStorage.getItem(SEMESTERS_KEY);
+    }
+    const initialSemesters = getInitialSemesters(initialSemestersFromLocal);
+
     const [semesters, setSemesters] =
         useState<SemesterState[]>(initialSemesters);
 
     useEffect(() => {
-        localStorage.setItem(SEMESTERS_KEY, JSON.stringify(semesters));
+        localStorage?.setItem(SEMESTERS_KEY, JSON.stringify(semesters));
     }, [semesters]);
 
     const addNewSemester = useCallback(() => {

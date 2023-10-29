@@ -41,7 +41,7 @@ export function SessionPlannerBanner() {
                             For further information visit the program regulation
                             link:{' '}
                             <a
-                                className="text-blue-600 underline"
+                                className="text-blue-700 underline"
                                 href="https://www.london.ac.uk/sites/default/files/regulations/progegs-bsc-computer-science-2023-24.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
