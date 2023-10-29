@@ -5,7 +5,7 @@ export function HomeAcknowledgements() {
     return (
         <section
             className="bg-neutral-200 text-black dark:bg-neutral-600 dark:text-white"
-            data-testid="HomeAckKnowledgements"
+            data-testid="HomeAcknowledgements"
         >
             <div className="container py-10">
                 <h2 className="mb-10 text-center text-2xl font-medium">

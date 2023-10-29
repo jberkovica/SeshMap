@@ -11,7 +11,7 @@ function Surveys() {
     };
     return (
         <div>
-            <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
+            <div className="bg-secondary rounded-lg bg-opacity-25 p-5">
                 <div className="row">
                     <div className="col-md-6">
                         <p className="lead">Please select Level</p>
@@ -93,14 +93,14 @@ const SurveyTable = ({ selectedLevel }: { selectedLevel: string }) => {
 
     return (
         <div>
-            <h2 className="text-center mb-5 display-3">
+            <h2 className="display-3 mb-5 text-center">
                 {displayHeader(selectedLevel)}
             </h2>
             <h5>
                 Question {currentQuestion + 1}/{questionHeaders.length}
             </h5>
             <p className="pb-5">{questionArray[currentQuestion]}</p>
-            <table className="table table-hover table-striped mb-5">
+            <table className="table-hover table-striped mb-5 table">
                 <thead>
                     <tr>
                         <th></th>

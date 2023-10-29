@@ -24,7 +24,7 @@ function Ranking() {
     // TODO: save last selection to session store?
     return (
         <div>
-            <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
+            <div className="bg-secondary rounded-lg bg-opacity-25 p-5">
                 <div className="row">
                     <div className="col-md-6">
                         <p className="lead">Please select Level</p>
@@ -233,7 +233,7 @@ const TableWithModuleRanking = ({
     return (
         <table
             {...getTableProps()}
-            className="table table-hover table-striped mb-5"
+            className="table-hover table-striped mb-5 table"
         >
             {/* The header that can be clicked to do sorting */}
             <thead>
@@ -401,14 +401,14 @@ const LevelData = ({ selectedLevel }: { selectedLevel: string }) => {
     if (selectedLevelData) {
         return (
             <div className="container pt-5">
-                <h2 className="text-center mb-5 display-3">
+                <h2 className="display-3 mb-5 text-center">
                     {displayHeader(selectedLevel)}
                 </h2>
                 {/* Module comparison */}
-                <h5 className="text-center mb-5 display-5">
+                <h5 className="display-5 mb-5 text-center">
                     Modules comparison
                 </h5>
-                <table className="table table-hover table-striped mb-5">
+                <table className="table-hover table-striped mb-5 table">
                     <thead>
                         <tr>
                             <th scope="col">Short</th>
@@ -428,11 +428,11 @@ const LevelData = ({ selectedLevel }: { selectedLevel: string }) => {
                 </table>
 
                 {/* Module ranking */}
-                <h5 className="text-center mb-5 display-5">Modules ranking</h5>
+                <h5 className="display-5 mb-5 text-center">Modules ranking</h5>
                 <TableWithModuleRanking selectedLevelData={selectedLevelData} />
 
                 {/* Module Charts */}
-                <h5 className="text-center mb-5 display-5 pt-5">
+                <h5 className="display-5 mb-5 pt-5 text-center">
                     Module Features
                 </h5>
                 <div className="row mb-8">
@@ -442,7 +442,7 @@ const LevelData = ({ selectedLevel }: { selectedLevel: string }) => {
                         </div>
                     ))}
                 </div>
-                <h5 className="text-center mb-5 display-5 pt-5">
+                <h5 className="display-5 mb-5 pt-5 text-center">
                     Metrics Comparison
                 </h5>
                 <div className="row mb-4 pb-5">

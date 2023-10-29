@@ -24,7 +24,7 @@ function Resources() {
 
     return (
         <div>
-            <div className="bg-secondary bg-opacity-25 p-5 rounded-lg">
+            <div className="bg-secondary rounded-lg bg-opacity-25 p-5">
                 <div className="row">
                     <div className="col-md-6">
                         <p className="lead">Please select Level and Module</p>
@@ -64,7 +64,7 @@ const ModuleData = ({ selectedModule }: { selectedModule: string }) => {
             // <div className="mt-5">
 
             <div className="container pt-5">
-                <h3 className="text-center mb-5 display-5">
+                <h3 className="display-5 mb-5 text-center">
                     {selectedModuleData.code} : {selectedModuleData.name}
                 </h3>
                 <Syllabus selectedModuleData={selectedModuleData} />
