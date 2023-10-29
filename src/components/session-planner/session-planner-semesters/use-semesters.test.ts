@@ -8,6 +8,7 @@ import {
     useSemesters,
 } from '@/components/session-planner/session-planner-semesters/use-semesters';
 import { CourseId } from '@/consts/course';
+import { SemesterState } from './types';
 
 describe('useSemesters', () => {
     describe('useSemesters', () => {
@@ -56,6 +57,98 @@ describe('useSemesters', () => {
                 SEMESTERS_KEY,
                 JSON.stringify([])
             );
+        });
+
+        test('removeSemester outside range does nothing', () => {
+            const { result } = renderHook(() => useSemesters());
+            expect(result.current.semesters).toHaveLength(1);
+            act(() => result.current.removeSemester(1));
+            expect(result.current.semesters).toHaveLength(1);
+            expect(setItemSpy).not.toHaveBeenLastCalledWith(
+                SEMESTERS_KEY,
+                JSON.stringify([])
+            );
+        });
+
+        test('setSemesters sets semesters correctly', () => {
+            const { result } = renderHook(() => useSemesters());
+
+            const semesters: SemesterState[] = [
+                [CourseId.ITP1, CourseId.DM, CourseId.CM, CourseId.FCS],
+                [CourseId.ITP2, CourseId.ADS1, CourseId.WD, ''],
+                [CourseId.SDD, CourseId.ASP, '', ''],
+            ];
+
+            act(() => result.current.setSemesters(semesters));
+            expect(result.current.semesters).toHaveLength(3);
+            expect(setItemSpy).toHaveBeenLastCalledWith(
+                SEMESTERS_KEY,
+                JSON.stringify(semesters)
+            );
+        });
+
+        test('updating a course in semester within bound works correctly', () => {
+            const { result } = renderHook(() => useSemesters());
+
+            const semesters: SemesterState[] = [
+                [CourseId.ITP1, CourseId.DM, CourseId.CM, CourseId.FCS],
+                [CourseId.ITP2, CourseId.ADS1, CourseId.WD, ''],
+                [CourseId.SDD, CourseId.ASP, '', ''],
+            ];
+
+            act(() => result.current.setSemesters(semesters));
+
+            // testing all three semesters to ensure slice is working correctly
+
+            act(() =>
+                result.current.changeCourseInSemester(0, 0, CourseId.HCW)
+            );
+            expect(setItemSpy).toHaveBeenLastCalledWith(
+                SEMESTERS_KEY,
+                JSON.stringify([
+                    [CourseId.HCW, CourseId.DM, CourseId.CM, CourseId.FCS],
+                    [CourseId.ITP2, CourseId.ADS1, CourseId.WD, ''],
+                    [CourseId.SDD, CourseId.ASP, '', ''],
+                ])
+            );
+
+            act(() =>
+                result.current.changeCourseInSemester(1, 3, CourseId.OOP)
+            );
+            expect(setItemSpy).toHaveBeenLastCalledWith(
+                SEMESTERS_KEY,
+                JSON.stringify([
+                    [CourseId.HCW, CourseId.DM, CourseId.CM, CourseId.FCS],
+                    [CourseId.ITP2, CourseId.ADS1, CourseId.WD, CourseId.OOP],
+                    [CourseId.SDD, CourseId.ASP, '', ''],
+                ])
+            );
+
+            act(() =>
+                result.current.changeCourseInSemester(2, 2, CourseId.CSec)
+            );
+            expect(setItemSpy).toHaveBeenLastCalledWith(
+                SEMESTERS_KEY,
+                JSON.stringify([
+                    [CourseId.HCW, CourseId.DM, CourseId.CM, CourseId.FCS],
+                    [CourseId.ITP2, CourseId.ADS1, CourseId.WD, CourseId.OOP],
+                    [CourseId.SDD, CourseId.ASP, CourseId.CSec, ''],
+                ])
+            );
+        });
+
+        test('updating a course out of bounds does nothing', () => {
+            const { result } = renderHook(() => useSemesters());
+
+            expect(setItemSpy).toHaveBeenCalledOnce();
+            act(() =>
+                result.current.changeCourseInSemester(1, 0, CourseId.HCW)
+            );
+            expect(setItemSpy).toHaveBeenCalledOnce();
+            act(() =>
+                result.current.changeCourseInSemester(0, 4, CourseId.HCW)
+            );
+            expect(setItemSpy).toHaveBeenCalledOnce();
         });
     });
 

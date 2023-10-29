@@ -58,8 +58,9 @@ export const useSemesters = () => {
         addNewSemester,
         changeCourseInSemester,
         semesters,
-        setSemesters,
         removeSemester,
+        // setSemesters only to be used in tests
+        setSemesters,
     };
 };
 
