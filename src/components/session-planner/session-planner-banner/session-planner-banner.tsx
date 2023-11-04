@@ -1,7 +1,7 @@
 export function SessionPlannerBanner() {
     return (
         <div
-            className="bg-neutral-200 text-black dark:bg-neutral-600 dark:text-white"
+            className="bg-neutral-200 text-gray-900 dark:bg-neutral-600 dark:text-white"
             data-testid="SessionPlannerBanner"
         >
             <div className="container flex justify-between py-10">

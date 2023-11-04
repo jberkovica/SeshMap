@@ -35,6 +35,93 @@ export enum CourseId {
 
 export const courseIds = Object.values(CourseId);
 
+export enum Level {
+    Four = 'Level 4',
+    Five = 'Level 5',
+    Six = 'Level 6',
+}
+
+export type Level4CourseId =
+    | CourseId.ITP1
+    | CourseId.ITP2
+    | CourseId.CM
+    | CourseId.DM
+    | CourseId.FCS
+    | CourseId.HCW
+    | CourseId.ADS1
+    | CourseId.WD;
+
+export const level4CourseIds: Level4CourseId[] = [
+    CourseId.ITP1,
+    CourseId.ITP2,
+    CourseId.CM,
+    CourseId.DM,
+    CourseId.FCS,
+    CourseId.HCW,
+    CourseId.ADS1,
+    CourseId.WD,
+];
+
+export type Level5CourseId =
+    | CourseId.OOP
+    | CourseId.SDD
+    | CourseId.PWD
+    | CourseId.ASP
+    | CourseId.CSec
+    | CourseId.GP
+    | CourseId.ADS2
+    | CourseId.DNW;
+
+export const level5CourseIds: Level5CourseId[] = [
+    CourseId.OOP,
+    CourseId.SDD,
+    CourseId.PWD,
+    CourseId.ASP,
+    CourseId.CSec,
+    CourseId.GP,
+    CourseId.ADS2,
+    CourseId.DNW,
+];
+
+export type Level6CourseId =
+    | CourseId.DS
+    | CourseId.DADT
+    | CourseId.MLNN
+    | CourseId.AI
+    | CourseId.VR
+    | CourseId.GD
+    | CourseId.AWD
+    | CourseId.IoT
+    | CourseId.ThreeDG
+    | CourseId.MD
+    | CourseId.ID
+    | CourseId.NLP
+    | CourseId.ISP
+    | CourseId.FP;
+
+export const level6CourseIds: Level6CourseId[] = [
+    CourseId.DS,
+    CourseId.DADT,
+    CourseId.MLNN,
+    CourseId.AI,
+    CourseId.VR,
+    CourseId.GD,
+    CourseId.AWD,
+    CourseId.IoT,
+    CourseId.ThreeDG,
+    CourseId.MD,
+    CourseId.ID,
+    CourseId.NLP,
+    CourseId.ISP,
+    CourseId.FP,
+];
+
+export const courseIdsByLevelMap: { [level in Level]: CourseId[] } = {
+    [Level.Four]: level4CourseIds,
+    [Level.Five]: level5CourseIds,
+    [Level.Six]: level6CourseIds,
+};
+
 export type CourseInformation = {
     id: string;
     name: string;

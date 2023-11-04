@@ -4,7 +4,7 @@ import { contributors } from './contributors';
 export function HomeAcknowledgements() {
     return (
         <section
-            className="bg-neutral-200 text-black dark:bg-neutral-600 dark:text-white"
+            className="bg-neutral-200 text-gray-900 dark:bg-neutral-600 dark:text-white"
             data-testid="HomeAcknowledgements"
         >
             <div className="container py-10">
