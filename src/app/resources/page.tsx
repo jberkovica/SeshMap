@@ -1,10 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import {
-    ResourcesBanner,
-    ResourcesContentContainer,
-} from '@/components/resources';
+import { CourseLevelSelectBanner } from '@/components/course-level-select-banner';
+import { ResourcesContentContainer } from '@/components/resources';
 import { CourseId, Level } from '@/consts/course';
 
 export default function Resources() {
@@ -13,7 +11,7 @@ export default function Resources() {
 
     return (
         <main>
-            <ResourcesBanner
+            <CourseLevelSelectBanner
                 level={level}
                 setLevel={setLevel}
                 courseId={courseId}

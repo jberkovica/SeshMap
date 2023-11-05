@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, test, vi } from 'vitest';
 import { CourseId, Level } from '@/consts/course';
-import { ResourcesBanner } from './resources-banner';
+import { CourseLevelSelectBanner } from './course-level-select-banner';
 
-describe('ResourcesBanner', () => {
-    test('renders subcomponents correctly', () => {
+describe('CourseLevelSelectBanner', () => {
+    test('renders subcomponents correctly with all props', () => {
         render(
-            <ResourcesBanner
+            <CourseLevelSelectBanner
                 courseId={CourseId.IoT}
                 level={Level.Six}
                 setCourseId={() => {}}
@@ -24,10 +24,24 @@ describe('ResourcesBanner', () => {
         expect(courseEl).toHaveProperty('value', CourseId.IoT);
     });
 
+    test('renders only levels correctly when no course related props are passed', () => {
+        render(
+            <CourseLevelSelectBanner level={Level.Six} setLevel={() => {}} />
+        );
+
+        const levelEl = screen.getByTestId('LevelSelect');
+        const courseEl = screen.queryByTestId('CourseSelect');
+
+        expect(screen.getByText('Please select Level')).toBeTruthy();
+        expect(levelEl).toBeTruthy();
+        expect(courseEl).toBeFalsy();
+        expect(levelEl).toHaveProperty('value', Level.Six);
+    });
+
     test('changing value of level calls setLevel', () => {
         const setLevel = vi.fn();
         render(
-            <ResourcesBanner
+            <CourseLevelSelectBanner
                 courseId={CourseId.IoT}
                 level={Level.Six}
                 setCourseId={() => {}}
@@ -44,7 +58,7 @@ describe('ResourcesBanner', () => {
     test('changing value of course calls setCourseId', () => {
         const setCourseId = vi.fn();
         render(
-            <ResourcesBanner
+            <CourseLevelSelectBanner
                 courseId={CourseId.IoT}
                 level={Level.Six}
                 setCourseId={setCourseId}

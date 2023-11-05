@@ -6,7 +6,7 @@ import Resources from './page';
 describe('Resources', () => {
     test('renders all components', () => {
         render(<Resources />);
-        expect(screen.getByTestId('ResourcesBanner')).toBeTruthy();
+        expect(screen.getByTestId('CourseLevelSelectBanner')).toBeTruthy();
         expect(screen.getByTestId('ResourcesContentContainer')).toBeTruthy();
     });
 
