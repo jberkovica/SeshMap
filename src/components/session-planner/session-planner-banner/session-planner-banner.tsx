@@ -1,3 +1,5 @@
+import { A } from '@/lib/a';
+
 export function SessionPlannerBanner() {
     return (
         <div
@@ -40,14 +42,9 @@ export function SessionPlannerBanner() {
                         <li>
                             For further information visit the program regulation
                             link:{' '}
-                            <a
-                                className="text-blue-700 underline"
-                                href="https://www.london.ac.uk/sites/default/files/regulations/progegs-bsc-computer-science-2023-24.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <A href="https://www.london.ac.uk/sites/default/files/regulations/progegs-bsc-computer-science-2023-24.pdf">
                                 Regulations 2023-2024
-                            </a>
+                            </A>
                         </li>
                     </ul>
                 </header>

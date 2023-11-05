@@ -6,7 +6,10 @@ import { PageHeaderLink } from './page-header-link';
 
 export function PageHeader() {
     return (
-        <header className="bg-gradient-to-r from-indigo-500 to-pink-400 py-4 lg:py-10">
+        <header
+            className="bg-gradient-to-r from-indigo-500 to-pink-400 py-4 lg:py-10"
+            data-testid="PageHeader"
+        >
             <div className="container flex flex-col justify-between lg:flex-row">
                 <Link href={Route.home}>
                     <Image

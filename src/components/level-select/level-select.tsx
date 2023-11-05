@@ -10,6 +10,7 @@ export function LevelSelect({ handleChange, value }: LevelSelectProps) {
     return (
         <Select
             aria-label="Select a level"
+            data-testid="LevelSelect"
             onChange={(e) => handleChange(e.target.value as Level)}
             value={value}
         >

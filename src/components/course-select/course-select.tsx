@@ -23,6 +23,7 @@ export function CourseSelect({
     return (
         <Select
             aria-label="Select a module"
+            data-testid="CourseSelect"
             onChange={(e) => handleChange(e.target.value as CourseId)}
             value={value}
         >

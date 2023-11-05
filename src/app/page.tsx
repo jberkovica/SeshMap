@@ -6,7 +6,7 @@ import {
 
 export default function Home() {
     return (
-        <main>
+        <main data-testid="Home">
             <HomeBanner />
             <HomeQuestions />
             <HomeAcknowledgements />
