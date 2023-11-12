@@ -9,19 +9,19 @@ describe('ResourcesContent', () => {
         render(<ResourcesContent courseInfo={courseInfo} />);
         expect(
             screen.getByText(`${courseInfo.id}: ${courseInfo.name}`)
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 
     test('renders all links', () => {
         const courseInfo = courseInfoMap[CourseId.HCW];
         render(<ResourcesContent courseInfo={courseInfo} />);
-        expect(screen.getByText('Syllabus')).toBeTruthy();
-        expect(screen.getByText('Specification')).toBeTruthy();
-        expect(screen.getByText('Slack')).toBeTruthy();
-        expect(screen.getByText('REPL')).toBeTruthy();
-        expect(screen.getByText('Notes')).toBeTruthy();
-        expect(screen.getByText('Midterm')).toBeTruthy();
-        expect(screen.getByText('Final')).toBeTruthy();
+        expect(screen.getByText('Syllabus')).toBeDefined();
+        expect(screen.getByText('Specification')).toBeDefined();
+        expect(screen.getByText('Slack')).toBeDefined();
+        expect(screen.getByText('REPL')).toBeDefined();
+        expect(screen.getByText('Notes')).toBeDefined();
+        expect(screen.getByText('Midterm')).toBeDefined();
+        expect(screen.getByText('Final')).toBeDefined();
         expect(screen.getAllByRole('link', { name: 'Open' }).length).toBe(7);
     });
 });

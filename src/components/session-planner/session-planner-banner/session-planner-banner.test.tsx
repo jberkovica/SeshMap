@@ -7,6 +7,6 @@ describe('SessionPlannerBanner', () => {
         render(<SessionPlannerBanner />);
         expect(
             screen.getByText('Tips on how to plan your semester')
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 });

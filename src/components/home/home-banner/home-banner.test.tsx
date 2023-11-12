@@ -7,7 +7,7 @@ import { getSemesterWeekNumber, HomeBanner } from './home-banner';
 describe('HomeBanner', () => {
     test('renders HomeBanner', () => {
         render(<HomeBanner />);
-        expect(screen.getByText('Welcome to SeshMap!')).toBeTruthy();
+        expect(screen.getByText('Welcome to SeshMap!')).toBeDefined();
     });
 
     test('renders correct week number', () => {

@@ -6,17 +6,17 @@ import Resources from './page';
 describe('Resources', () => {
     test('renders all components', () => {
         render(<Resources />);
-        expect(screen.getByTestId('CourseLevelSelectBanner')).toBeTruthy();
-        expect(screen.getByTestId('ResourcesContentContainer')).toBeTruthy();
+        expect(screen.getByTestId('CourseLevelSelectBanner')).toBeDefined();
+        expect(screen.getByTestId('ResourcesContentContainer')).toBeDefined();
     });
 
     test('initially loads with ResourcesContent set to ITP1', () => {
         const courseInfo = courseInfoMap[CourseId.ITP1];
         render(<Resources />);
-        expect(screen.getByTestId('ResourcesContent')).toBeTruthy();
+        expect(screen.getByTestId('ResourcesContent')).toBeDefined();
         expect(
             screen.getByText(`${courseInfo.id}: ${courseInfo.name}`)
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 
     test('changing level removes ResourcesContent', () => {
@@ -24,7 +24,7 @@ describe('Resources', () => {
         fireEvent.change(screen.getByTestId('LevelSelect'), {
             target: { value: Level.Six },
         });
-        expect(screen.queryByTestId('ResourcesContent')).toBeFalsy();
+        expect(screen.queryByTestId('ResourcesContent')).toBeNull();
     });
 
     test('changing course changes ResourcesContent', () => {
@@ -36,6 +36,6 @@ describe('Resources', () => {
 
         expect(
             screen.getByText(`${courseInfo.id}: ${courseInfo.name}`)
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 });

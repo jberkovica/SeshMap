@@ -5,6 +5,6 @@ import Surveys from './page';
 describe('Surveys', () => {
     test('renders all components', () => {
         render(<Surveys />);
-        expect(screen.getByTestId('CourseLevelSelectBanner')).toBeTruthy();
+        expect(screen.getByTestId('CourseLevelSelectBanner')).toBeDefined();
     });
 });

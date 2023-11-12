@@ -6,9 +6,9 @@ import { HomeAcknowledgements } from './home-acknowledgements';
 describe('HomeAcknowledgements', () => {
     test('renders contributors', () => {
         render(<HomeAcknowledgements />);
-        expect(screen.getByText(contributors[0].name)).toBeTruthy();
+        expect(screen.getByText(contributors[0].name)).toBeDefined();
         expect(
             screen.getByText(contributors[contributors.length - 1].name)
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 });

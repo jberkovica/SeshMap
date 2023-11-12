@@ -9,6 +9,6 @@ describe('PageFooter', () => {
         const today = DateTime.now();
         expect(
             screen.getByText(new RegExp(today.get('year').toString()))
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 });

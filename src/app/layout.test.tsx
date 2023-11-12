@@ -18,8 +18,8 @@ describe('RootLayout', () => {
                 <Home />
             </RootLayout>
         );
-        expect(screen.getByTestId('PageHeader')).toBeTruthy();
-        expect(screen.getByTestId('PageFooter')).toBeTruthy();
-        expect(screen.getByTestId('Home')).toBeTruthy();
+        expect(screen.getByTestId('PageHeader')).toBeDefined();
+        expect(screen.getByTestId('PageFooter')).toBeDefined();
+        expect(screen.getByTestId('Home')).toBeDefined();
     });
 });

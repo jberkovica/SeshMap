@@ -21,7 +21,7 @@ describe('Semester', () => {
 
     test('renders semester title correctly', () => {
         render(<Semester {...props} semesterNumber={3} />);
-        expect(screen.getByText('Semester 3')).toBeTruthy();
+        expect(screen.getByText('Semester 3')).toBeDefined();
     });
 
     test('clicking on the x icon calls removeSemester', () => {

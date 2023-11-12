@@ -5,8 +5,8 @@ import Home from './page';
 describe('Home', () => {
     test('renders all components', () => {
         render(<Home />);
-        expect(screen.getByTestId('HomeBanner')).toBeTruthy();
-        expect(screen.getByTestId('HomeQuestions')).toBeTruthy();
-        expect(screen.getByTestId('HomeAcknowledgements')).toBeTruthy();
+        expect(screen.getByTestId('HomeBanner')).toBeDefined();
+        expect(screen.getByTestId('HomeQuestions')).toBeDefined();
+        expect(screen.getByTestId('HomeAcknowledgements')).toBeDefined();
     });
 });

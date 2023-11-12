@@ -11,7 +11,7 @@ describe('Select', () => {
             </Select>
         );
         expect(screen.getByLabelText('Select')).toHaveProperty('value', 'a');
-        expect(screen.getByText('This is option a')).toBeTruthy();
+        expect(screen.getByText('This is option a')).toBeDefined();
     });
 
     test('OnChange works Correctly', () => {

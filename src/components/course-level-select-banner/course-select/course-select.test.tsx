@@ -17,7 +17,7 @@ describe('CourseSelect', () => {
             'value',
             CourseId.ASP
         );
-        expect(screen.getByText(CourseId.ASP)).toBeTruthy();
+        expect(screen.getByText(CourseId.ASP)).toBeDefined();
     });
 
     test('OnChange works Correctly', () => {
@@ -35,7 +35,7 @@ describe('CourseSelect', () => {
         render(<Component />);
         const selectEl = screen.getByLabelText('Select a module');
         expect(selectEl).toHaveProperty('value', '');
-        expect(screen.getByText('Select module')).toBeTruthy();
+        expect(screen.getByText('Select module')).toBeDefined();
         fireEvent.change(selectEl, { target: { value: CourseId.SDD } });
         expect(selectEl).toHaveProperty('value', CourseId.SDD);
     });

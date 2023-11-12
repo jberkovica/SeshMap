@@ -5,7 +5,7 @@ import SessionPlanner from './page';
 describe('SessionPlanner', () => {
     test('renders all components', () => {
         render(<SessionPlanner />);
-        expect(screen.getByTestId('SessionPlannerBanner')).toBeTruthy();
-        expect(screen.getByTestId('SessionPlannerSemesters')).toBeTruthy();
+        expect(screen.getByTestId('SessionPlannerBanner')).toBeDefined();
+        expect(screen.getByTestId('SessionPlannerSemesters')).toBeDefined();
     });
 });

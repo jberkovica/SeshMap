@@ -6,6 +6,6 @@ describe('ContributorLink', () => {
     test('renders link', () => {
         const name = 'Name';
         render(<ContributorLink name={name} href="https://github.com" />);
-        expect(screen.getByText(name)).toBeTruthy();
+        expect(screen.getByText(name)).toBeDefined();
     });
 });

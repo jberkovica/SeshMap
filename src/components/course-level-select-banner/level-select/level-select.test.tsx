@@ -11,7 +11,7 @@ describe('LevelSelect', () => {
             'value',
             Level.Five
         );
-        expect(screen.getByText(Level.Five)).toBeTruthy();
+        expect(screen.getByText(Level.Five)).toBeDefined();
     });
 
     test('OnChange works Correctly', () => {

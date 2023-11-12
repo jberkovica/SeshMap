@@ -60,7 +60,7 @@ describe('SemesterCourse', () => {
             'Select a course'
         ) as HTMLSelectElement;
         expect(selectEl.value).toBe('');
-        expect(screen.getByText('Select Module')).toBeTruthy();
+        expect(screen.getByText('Select Module')).toBeDefined();
     });
 
     test('calls updateCourse when select option is changed', () => {

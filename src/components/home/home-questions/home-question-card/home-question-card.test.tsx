@@ -7,7 +7,7 @@ describe('HomeQuestionCard', () => {
         const title = 'title';
         const description = 'description';
         render(<HomeQuestionCard title={title} description={description} />);
-        expect(screen.getByText(title)).toBeTruthy();
-        expect(screen.getByText(description)).toBeTruthy();
+        expect(screen.getByText(title)).toBeDefined();
+        expect(screen.getByText(description)).toBeDefined();
     });
 });

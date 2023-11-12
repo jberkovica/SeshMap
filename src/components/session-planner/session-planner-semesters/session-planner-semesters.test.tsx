@@ -10,7 +10,7 @@ describe('SessionPlannerSemesters', () => {
 
     test('renders SessionPlannerSemesters', () => {
         render(<SessionPlannerSemesters />);
-        expect(screen.getByTestId('SessionPlannerSemesters')).toBeTruthy();
+        expect(screen.getByTestId('SessionPlannerSemesters')).toBeDefined();
     });
 
     test('clicking on Add a semester button adds a new semester', () => {
@@ -24,7 +24,7 @@ describe('SessionPlannerSemesters', () => {
 
     test('renders semester title correctly', () => {
         render(<SessionPlannerSemesters />);
-        expect(screen.getByText('Semester 1')).toBeTruthy();
+        expect(screen.getByText('Semester 1')).toBeDefined();
     });
 
     test('can remove a semester by clicking on the delete button', () => {

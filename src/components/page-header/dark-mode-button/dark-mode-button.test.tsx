@@ -5,11 +5,11 @@ import { DarkModeButton } from './dark-mode-button';
 describe('DarkModeButton', () => {
     test('updates dark mode when clicked', async () => {
         render(<DarkModeButton />);
-        expect(screen.queryByTestId('sun-icon')).toBeFalsy();
-        expect(screen.getByTestId('moon-icon')).toBeTruthy();
+        expect(screen.queryByTestId('sun-icon')).toBeNull();
+        expect(screen.getByTestId('moon-icon')).toBeDefined();
 
         const button = screen.getByTestId('DarkModeButton');
         fireEvent.click(button);
-        expect(await screen.findByTestId('sun-icon')).toBeTruthy();
+        expect(await screen.findByTestId('sun-icon')).toBeDefined();
     });
 });

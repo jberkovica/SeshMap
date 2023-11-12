@@ -17,9 +17,11 @@ describe('CourseLevelSelectBanner', () => {
         const levelEl = screen.getByTestId('LevelSelect');
         const courseEl = screen.getByTestId('CourseSelect');
 
-        expect(screen.getByText('Please select Level and Module')).toBeTruthy();
-        expect(levelEl).toBeTruthy();
-        expect(courseEl).toBeTruthy();
+        expect(
+            screen.getByText('Please select Level and Module')
+        ).toBeDefined();
+        expect(levelEl).toBeDefined();
+        expect(courseEl).toBeDefined();
         expect(levelEl).toHaveProperty('value', Level.Six);
         expect(courseEl).toHaveProperty('value', CourseId.IoT);
     });
@@ -32,9 +34,9 @@ describe('CourseLevelSelectBanner', () => {
         const levelEl = screen.getByTestId('LevelSelect');
         const courseEl = screen.queryByTestId('CourseSelect');
 
-        expect(screen.getByText('Please select Level')).toBeTruthy();
-        expect(levelEl).toBeTruthy();
-        expect(courseEl).toBeFalsy();
+        expect(screen.getByText('Please select Level')).toBeDefined();
+        expect(levelEl).toBeDefined();
+        expect(courseEl).toBeNull();
         expect(levelEl).toHaveProperty('value', Level.Six);
     });
 

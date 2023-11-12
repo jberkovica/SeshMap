@@ -10,6 +10,6 @@ describe('PageHeaderLink', () => {
                 Click here
             </PageHeaderLink>
         );
-        expect(screen.getByText('Click here')).toBeTruthy();
+        expect(screen.getByText('Click here')).toBeDefined();
     });
 });
