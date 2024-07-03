@@ -1,3 +1,3 @@
 import { DateTime } from 'luxon';
 
-export const semesterStartDate = DateTime.fromISO('2023-10-09');
+export const semesterStartDate = DateTime.fromISO('2024-04-08');

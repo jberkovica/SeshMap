@@ -31,9 +31,9 @@ export function PageHeader() {
                     <PageHeaderLink href={Route.rankings}>
                         Ranking
                     </PageHeaderLink>
-                    <PageHeaderLink href={Route.surveys}>
+                    {/* <PageHeaderLink href={Route.surveys}>
                         Surveys
-                    </PageHeaderLink>
+                    </PageHeaderLink> */}
                     <DarkModeButton />
                 </nav>
             </div>
